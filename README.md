@@ -7,31 +7,29 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 
 本キットは、Xilinx ZCU104評価ボードとSDカードにインストールされる一連のソフトウェアとAIハードウェア構成ファイルからなります。
 
-本キットの最初のリリースでは、ライブ画像ストリームから動体検知を行う機能を提供します。将来的には、人物検知や欠陥・異常検知といった特定の産業におけるユースケースを想定した機能をリリースしていく予定です。
-
 ## 1.1 リリースノート
 
 - 2018/12/XX オンライン動体検知機能リリース
 
 ## 1.2 サポート
 
-本キットをご購入されたお客様向けに、e-mailによるテクニカルサポートを提供しています。サポートが必要なお客様は、FPGAボードのシリアル番号を記載の上、<fpga-support@hacarus.com>までご連絡ください。頂いたご要望等は、製品ロードマップにあわせて製品開発に役立たせていただきます。
+本キットをご購入されたお客様向けに、e-mailによるテクニカルサポートを提供しています。サポートが必要なお客様は、FPGAボードのシリアル番号を記載の上、<fpga-support@hacarus.com> までご連絡ください。
 
 ---
 # 2. 概要
 
 ## 2.1 システム構成
 
-本キットは、[Xilinx Zynq UltraScale+ MPSoC ZCU104 キット](https://japan.xilinx.com/products/boards-and-kits/zcu104.html)(以下、ZCU104評価キット)と、ZCU104評価キット上でハードウェアアクセラレーションされるHacarus独自のSparse AIアルゴリズムで構成されます。ZCU104評価キットは、組み込みビジョンアプリケーションのために設計されたFPGAプラットフォームで、組み込みビジョンアプリケーションに必要な周辺機器・インターフェースを備えています。
+本キットは、[Xilinx Zynq UltraScale+ MPSoC ZCU104 キット](https://japan.xilinx.com/products/boards-and-kits/zcu104.html)(以下、ZCU104評価キット)と、ZCU104評価キット上でハードウェアアクセラレーションされるHacarus独自の AIアルゴリズムで構成されます。ZCU104評価キットは、組み込みビジョンアプリケーションのために設計されたFPGAプラットフォームで、組み込みビジョンアプリケーションに必要な周辺機器・インターフェースを備えています。
 
-![](https://i.imgur.com/MoRkhuR.png)
+![本キットの概要](https://i.imgur.com/MoRkhuR.png)
 
-本キットを用いることで、USBカメラからのライブ画像ストリームを独自AIアルゴリズムでオンライン学習し、予測結果をモニタ出力することが可能です。Hacarus シリアル通信を介してホストマシンに解析結果を送信することも可能です。
+本キットを用いることで、USBカメラからのライブ画像ストリームを独自AIアルゴリズムでオンライン学習し、予測結果をモニタ出力することが可能です。シリアル通信を介してホストマシンに解析結果を送信することも可能です。
 
 
 ### 2.1.1 オンライン動体検知
-オンライン動体検知では、入力にUSBカメラを、出力にHDMIモニターまたはDisplayPortモニターを利用します。このキットは、固定されたUSBカメラが捉えたライブ画像ストリームの中から、動体を検出・マーキングしてモニタに出力します。ファイル名の末尾が moving-object となっている zip ファイルをダウンロードすることで利用が可能です。
 
+オンライン動体検知では、入力にUSBカメラを、出力にHDMIモニターまたはDisplayPortモニターを利用します。このキットは、固定されたUSBカメラが捉えたライブ画像ストリームの中から、動体を検出・マーキングしてモニタに出力します。ファイル名の末尾が moving-object となっている zip ファイルをダウンロードすることで利用が可能です。
 
 ---
 # 3. 動作環境
@@ -58,38 +56,28 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 
 ## 3.3 ライセンス
 
-**TODO: ライセンス表記が必要かどうかも含めて検討**
-**TODO: ライセンス内容は別途相談**
+本ライセンスは、本キットをご購入いただいた時点から適用されます。本ライセンスには、3ヶ月間のソフトウェアおよびハードウェアのサポートとソフトウェアアップデートが含まれます。
 
-本キットのコンポーネントは、XYZライセンスのもと提供されます。
+ご購入から3ヶ月以降のサポートおよびソフトウェアアップデートには、別途ご相談ください。
 
-本ライセンスは、本キットをご購入または専用SDカードコンポーネントをご購入いただいた時点から適用されます。本ライセンスには、6ヶ月間の無料サポートと無料ソフトウェアアップデートが含まれます。
+## 3.4 互換性
 
-ご購入から6ヶ月以降のサポートおよびソフトウェアアップデートには、追加の継続料金が必要です。継続料金のお申し込みは[こちら]()までアクセスください。
+本キットは以下のハードウェア構成の条件で、動作検証済みです。以下以外の OS や USB カメラで稼働させる場合はサポート対象外となりますのでご了承ください。
 
-
-## 3.4 互換性 (KT/MT)
-
-本キットは以下のハードウェア構成の条件で、動作検証済みです。
-* ホストマシン及びシリアルターミナルエミュレーター
+* ホストマシン及びターミナルエミュレータ
     <table>
-    <thead><tr><th>型</th><th>OS</th><th>エミュレーター</th></tr></thead>
-    <tbody><tr><td>...</td><td>Ubunts 16.04</td><td>...</td></tr>
-    <tr><td>...</td><td>Mac OS ...</td><td>...</td></tr>
-    <tr><td>...</td><td>Windows 10 Home</td><td>Tera Term</td></tr></tbody>
-    </table>
-* モニター
-    <table>
-    <thead><tr><th>型</th><th>解像度</th></tr></thead>
-    <tbody><tr><td>LG 27UD58</td><td>1920x1080</td></tr>
-    <tr><td>...</td><td>...</td></tr>
-    <tr><td>...</td><td>...</td></tr></tbody>
+    <thead><tr><th>OS</th><th>エミュレータ</th></tr></thead>
+    <tbody><tr><td>Ubunts 16.04</td><td>...</td></tr>
+    <tr><td>Mac OS ...</td><td>...</td></tr>
+    <tr><td>Windows 10 Home</td><td>Tera Term</td></tr></tbody>
     </table>
 * USB3カメラ
     <table>
     <thead><tr><th>型</th><th>解像度</th></tr></thead>
-    <tbody><tr><td>e-con See3CAM_CU30</td><td>1920x1080, 1280x72</td></tr></tbody>
+    <tbody><tr><td>e-con See3CAM_CU30</td><td>1920x1080</td></tr></tbody>
     </table>
+
+モニターは LG 社製 27UD58 (1920x1080) を HDMI 接続にて動作確認しています。これ以外の解像度や接続方式で問題が発生した場合はサポートまでお知らせください。
 
 ---
 # 4. インストールおよび操作方法
@@ -101,26 +89,23 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 3. micro USBケーブルをUSB-UARTコネクタ①に接続し、もう一方のコネクタをホストマシンのUSBポートに挿入します。
 4. ダウンロードしたZIPファイルを書き込んだSDカードを、microSDスロット②に挿入します。
     * micro SDカードはFATでフォーマットされている必要があります。
-    * ダウンロードしたzipファイルをZIPユーティリティで解凍して、micro SDカードのルートディレクトリに一連のファイルをコピーします。ファイルの階層が次のようになっていることを確認してください。
-        * [SD_CARD]/gstreamer-1.0/libgstsdxmotiondetection.so
-        * [SD_CARD]/lib/libgstsdxallocator.so
-        * [SD_CARD]/lib/libgstsdxbase.so
-        * [SD_CARD]/lib/libmotiondetection.so
-        * [SD_CARD]/BOOT.BIN
-        * [SD_CARD]/gstdemo
-        * [SD_CARD]/image.ub
-        * [SD_CARD]/video_cmd
-        * [SD_CARD]/README.txt
+    * ダウンロードしたzipファイルをZIPユーティリティで解凍して、micro SDカードのルートディレクトリ (${SD_CARD}) 以下に一連のファイルをコピーします。ファイルの階層が次のようになっていることを確認してください。
+        * gstreamer-1.0/libgstsdxmotiondetection.so
+        * lib/libgstsdxallocator.so
+        * lib/libgstsdxbase.so
+        * lib/libmotiondetection.so
+        * BOOT.BIN
+        * gstdemo
+        * image.ub
+        * video_cmd
+        * README.txt
 6. e-con See3CAM_CU30 USBカメラを、USBコネクタ➄に接続します。
 7. ブートモードスイッチ⑧(SW6)が、(1,2,3,4)=(ON, OFF, OFF, OFF)になっていることを確認します。
 
-![](https://i.imgur.com/tDI7LXC.jpg)
+![ボード概要](https://i.imgur.com/tDI7LXC.jpg)
 
 <div style="font-size:0.8em;">(※)リブートスイッチ(④の2つのスイッチの一方)を押すことで、Linuxシステムをリブートすることができます。実行中に、誤ってUSBカメラをコネクタから抜いてしまった場合等、必要に応じてシステムを再起動することができます。</div>
 
-
-
----
 ## 4.2 アプリケーション[xyz]の実行
 
 ### 4.2.1 Step 1 (準備)
@@ -142,7 +127,7 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 ```
 # cd /media/card
 ```
-3. 次の一連のコマンドを送信し、micro SDカード上の共有ライブラリをコピーします。 
+3. 次の一連のコマンドを送信し、micro SDカード上の共有ライブラリをコピーします。
 ```
 # cp lib/libopticalflow.so /usr/lib
 # cp gstreamer-1.0/libgstsdxopticalflow.so /usr/lib/gstreamer-1.0
@@ -154,6 +139,7 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 # gstdemo
 ```
 
+<!--
 # 5 ハードウェア構成を変更する場合
 
 以下を記述予定(<span style="color:red;">PALTECK様のサポート希望</span>)
@@ -161,15 +147,10 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 * DisplayPortを利用する場合
 * HDMIの別のポートを利用する場合
 * 別のUSBカメラを利用する場合
+-->
 
 ---
-# 6 参考資料
+# 5 参考資料
 
 * [Hacarus Sparse AI Kit for FPGA ユーザマニュアル](https://hacarus.com/ja/fpga-kit/XXXX)
 * [Xilinx Zynq UltraScale+ MPSoC ZCU104 キット](https://japan.xilinx.com/products/boards-and-kits/zcu104.html)
-
-
-
-
-
-
