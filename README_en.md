@@ -1,0 +1,157 @@
+# Hacarus Sparse AI Kit for FPGA – Technical Document(English Version)
+
+
+# 1. Introduction
+
+Hacarus Sparse AI Kit for FPGA is a cutting-edge, high-speed, low-power AI starter kit which is capable of machine learning and inference.
+
+This kit consists of the Xilinx ZCU104 Evaluation Board, software which can installed through an SD card, and AI hardware files.
+
+## 1.1 Release Notes
+
+- 2018/12/XX Online Motion Detection Functionality Release
+
+## 1.2 Support
+
+We offer technical support via Email to customers that have purchased this kit. For customers that require support, please send an Email including the FPGA Board’s serial number to <fpga-support@hacarus.com>.
+
+---
+# 2. Overview
+
+## 2.1 System Configuration
+
+This kit is put together using Hacarus’s original AI algorithms which are hardware accelerated through the [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://japan.xilinx.com/products/boards-and-kits/zcu104.html). (For the sake of simplicity, it will be called ZCU104 Evaluation Kit henceforth.) The ZCU104 Evaluation Kit is an FPGA platform setup for the sake of embedded vision applications, so peripheral devices and interfaces are furnished with the board itself.
+
+
+![Hacarus Sparse AI Kit Overview](https://i.imgur.com/MoRkhuR.png)
+
+Using the Hacarus Sparse AI Kit, the live video stream from a USB camera is processed as learning data through Hacarus’s original AI algorithms. It is possible to view the results of machine learning predictions from monitor output. Through serial communication, analysis results can also be sent to the host machine.
+
+### 2.1.1 Motion Detection (Calculated On A Cloud Server)
+
+A USB camera input and an HDMI/DisplayPort monitor output is used for motion detection. Computations are performed on a Cloud Server. From the live video stream obtained from a fixed USB camera, moving objects are recognized by the algorithm and marked before being output to the monitor. It is possible to view the resulting video by downloading the corresponding zip file with the filename extention “moving-object.”
+
+---
+# 3. System Requirements
+
+## 3.1 Hardware
+
+The hardware listed below is required to operate the Hacarus Sparse AI Kit.
+
+* ZCU104 Evaluation Board
+* Micro USB Cable (used for connecting the ZCU104 board to the host machine)
+* Micro SD Card
+* Any DisplayPort or HDMI input Monitor with the one of the resolutions listed below.
+    * 3840x2160
+    * 1920x1080
+    * 1280x720
+* Display Port Cable or HDMI Cable
+* e-con Systems See3CAM_CU30_CLT_TC USB Camera
+
+## 3.2 Software
+
+* Serial Terminal Emulator (e.g. Tera Term)
+* SD Card Installation File
+    * In regards to the required download files, please refer to the download sites that are listed in the User Guide included with this kit.
+
+## 3.3 License
+
+The license for this kit becomes effective immediately after purchase. The license is included with 3 months of software and hardware support, as well as software updates.
+
+To receive software or hardware support after 3 months from the time of purchase, please contact customer support.
+
+## 3.4 Compatibility
+
+The functionality of this kit has been confirmed for the hardware configurations listed below. Please note that, in the event that the user decides to use hardware other than what is listed below (i.e. OS, USB camera), they will be unable to receive support for any issues that may arise thereafter.
+
+* Host Machine/Terminal Emulator
+    <table>
+    <thead><tr><th>OS</th><th>エミュレータ</th></tr></thead>
+    <tbody><tr><td>Ubunts 16.04</td><td>...</td></tr>
+    <tr><td>Mac OS ...</td><td>...</td></tr>
+    <tr><td>Windows 10 Home</td><td>Tera Term</td></tr></tbody>
+    </table>
+* USB3 Camera
+    <table>
+    <thead><tr><th>Model</th><th>Resolution</th></tr></thead>
+    <tbody><tr><td>e-con See3CAM_CU30</td><td>1920x1080</td></tr></tbody>
+    </table>
+
+Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected via HDMI. If a problem occurs using a different type of connection or resolution, please ??contact customer support??.
+
+
+---
+# 4. Installation and Method of Operation
+
+## 4.1 Board Setup
+[Setup procedure and illustrations will be updated.]
+1. Connect the 12V power plug to connector ③.
+2. Connect your output monitor to connector ⑦ using an HDMI cable. Alternatively, you can connect a DisplayPort cable to connector ⑥.
+3. Connect the Micro side of your Micro-USB cable to to the USB-UART (connector ①), and connect the USB side to a USB port on our host machine. 
+4. Next, take the SD card, which should contain the ZIP file that you downloaded (refer to Section 3.2), and plug it into the Micro-USB slot ②.
+    * It is necessary that the the Micro SD card be formatted with FAT.
+    * Using any zip utility, unzip the ZIP file saved to your Micro SD card and copy the following files to your Micro SD card’s root directory (${SD_CARD}).
+        * gstreamer-1.0/libgstsdxmotiondetection.so
+        * lib/libgstsdxallocator.so
+        * lib/libgstsdxbase.so
+        * lib/libmotiondetection.so
+        * BOOT.BIN
+        * gstdemo
+        * image.ub
+        * video_cmd
+        * README.txt
+6. Connect your e-con See3CAM_CU30 USB Camera to USB connector ➄.
+7. Confirm that the Boot Mode Switch ⑧ is set to (1,2,3,4)=(ON, OFF, OFF, OFF).
+
+![Board Overview](https://i.imgur.com/tDI7LXC.jpg)
+
+<div style="font-size:0.8em;">(※)You can reboot the Linux system on the FPGA using the Reboot Switch(either of the ⑨ switches)Mid-execution、in the event that there are connection mistakes (e.g. USB camera being unplugged)、you can simply reboot the system using this switch when necessary.</div>
+
+## 4.2 [xyz] Application Execution
+
+### 4.2.1 Step 1 (Preparation)
+1. Using the same method from section 4.1, copy the files to the Micro SD card and insert the card into the Micro SD slot ②.
+2. Switch the power switch ④ on the FPGA on and wait for the FPGA to boot up.
+ * In the event that the micro USB is configured correctly, the *** LED should change from red to green before turning off. If the LED stays green, you may not have configured the FPGA correctly in section 4.1. In particular, please confirm that boot mode switch is set to (1,2,3,4)=(ON,OFF,OFF,OFF), and also that the micro SD card’s directory hierarchy is correct.
+3. Open a Serial Terminal Emulator (e.g. Tera Term) from your host machine and connect to the FPGA board with the Serial Port configured to the settings listed below.
+    <table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><th>Port</th><td>(※1)Reference</td></tr><tr><th>Baud Rate</th><td>115200</td></tr><tr><th>Data Bits</th><td>8bit</td></tr><tr><th>Stop Bits</th><td>1bit</td></tr><tr><th>Parity</th><td>None</td></tr><tr><th>Flow Control</th><td>None</td></tr></tbody></table>
+    <div style="font-size:0.8em;">(※1) The port number will vary depending on what host machine you are using.
+    <ul><li>If you are using Linux、>If you are using Linux、>If you are using Linux、typing "ls -l /dev/ttyUSB*" will display your devices. You have to select the 2nd device. For example、if /dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, /dev/ttyUSB3 are displayed、you have to select /dev/ttyUSB1。Furthermore、you have to change the permissions of the port that you select using chmod 666. </li>           <li>TODO: If you are using Windows OS...</li>
+    <li>TODO: If you are using Mac...</li>
+    </ul></div>
+* TODO: TODO: How to identify the serial port and change the access permissions of the port for each OS.
+* TODO: Create an example for connecting to Tera Term.
+
+### 4.2.2 Step 2 (Execution)
+1. Wait until the command prompt appears in the serial terminal window.
+2. When the command prompt appears, type in the following command to change to the SD card directory.
+```
+# cd /media/card
+```
+3. Next, enter the following sequence of commands in order to copy the shared library from the micro SD card to the FPGA.
+```
+# cp lib/libopticalflow.so /usr/lib
+# cp gstreamer-1.0/libgstsdxopticalflow.so /usr/lib/gstreamer-1.0
+# cp lib/libgstsdxbase.so /usr/lib/gstreamer-1.0
+# cp lib/libgstsdxallocator.so /usr/lib/gstreamer-1.0
+```
+2. Enter the following command in order to execute the application.
+```
+# gstdemo
+```
+
+<!--
+# 5 In The Event That You Modify The Hardware Configuration
+
+The following procedures will be written in the future.(<span style="color:red;">Support from PALTECK desired.</span>)
+
+* If you use DisplayPort
+* If you use a different HDMI port
+* If you use a different USB camera
+-->
+
+---
+# 5 Reference Materials
+
+* [Hacarus Sparse AI Kit for FPGA – User Manual](https://hacarus.com/ja/fpga-kit/XXXX)
+* [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://www.xilinx.com/products/boards-and-kits/zcu104.html)
