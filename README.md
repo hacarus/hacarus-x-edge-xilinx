@@ -65,17 +65,18 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 本キットは以下のハードウェア構成の条件で、動作検証済みです。以下以外の OS や USB カメラで稼働させる場合はサポート対象外となりますのでご了承ください。
 
 * ホストマシン及びターミナルエミュレータ
-    <table>
-    <thead><tr><th>OS</th><th>エミュレータ</th></tr></thead>
-    <tbody><tr><td>Ubunts 16.04</td><td>...</td></tr>
-    <tr><td>Mac OS ...</td><td>...</td></tr>
-    <tr><td>Windows 10 Home</td><td>Tera Term</td></tr></tbody>
-    </table>
+
+OS| エミュレータ
+------------- | -------------
+Ubunts 16.04 | ...
+Mac OS ... | ...
+Windows 10 Home | Tera Term
+
 * USB3カメラ
-    <table>
-    <thead><tr><th>型</th><th>解像度</th></tr></thead>
-    <tbody><tr><td>e-con See3CAM_CU30</td><td>1920x1080</td></tr></tbody>
-    </table>
+
+型| 解像度
+------------- | -------------
+e-con See3CAM_CU30 | 1920x1080
 
 モニターは LG 社製 27UD58 (1920x1080) を HDMI 接続にて動作確認しています。これ以外の解像度や接続方式で問題が発生した場合はサポートまでお知らせください。
 
@@ -90,7 +91,8 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 4. ダウンロードしたZIPファイルを書き込んだSDカードを、microSDスロット②に挿入します。
 
 * micro SDカードはFATでフォーマットされている必要があります。
-5. ダウンロードしたzipファイルをZIPユーティリティで解凍して、micro SDカードのルートディレクトリ (${SD_CARD}) 以下に一連のファイルをコピーします。ファイルの階層が次のようになっていることを確認してください。
+
+5.ダウンロードしたzipファイルをZIPユーティリティで解凍して、micro SDカードのルートディレクトリ (${SD_CARD}) 以下に一連のファイルをコピーします。ファイルの階層が次のようになっていることを確認してください。
 
 * gstreamer-1.0/libgstsdxmotiondetection.so
 * lib/libgstsdxallocator.so
@@ -101,8 +103,9 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 * image.ub
 * video_cmd
 * README.txt
-6. e-con See3CAM_CU30 USBカメラを、USBコネクタ➄に接続します。
-7. ブートモードスイッチ⑧(SW6)が、(1,2,3,4)=(ON, OFF, OFF, OFF)になっていることを確認します。
+
+6.e-con See3CAM_CU30 USBカメラを、USBコネクタ➄に接続します。
+7.ブートモードスイッチ⑧(SW6)が、(1,2,3,4)=(ON, OFF, OFF, OFF)になっていることを確認します。
 
 ![ボード概要](https://i.imgur.com/tDI7LXC.jpg)
 
@@ -114,26 +117,27 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 1. 4章の方法で、micro SDカードにファイルをコピーして、FPGAボードのスロットに差し込みます。また、FPGAボードが正しくセットアップされているか確認します。
 2. FPGAボードの電源スイッチ④をONにして、FPGAボードを起動します。
  * 正しくファイルがインストールされたmicro SDカードが挿入されている場合、***のLEDが赤色から緑色に変化し点灯します。LEDが緑色に点灯しない場合は、4章の方法で、正しくFPGAボードが設定されているか確認します。特にブートモードスイッチが(1,2,3,4)=(ON,OFF,OFF,OFF)になっているか確認し、また、micro SDカードのディレクトリ階層が正しいか確認します。
-3. ホストマシン上でシリアル・ターミナル・エミュレーターを起動し以下の設定でFPGAボードに接続します。
-    <table>
-    <thead><tr><th>項目</th><th>値</th></tr></thead>
-    <tbody><tr><th>Port</th><td>(※1)参照</td></tr>
-    <tr><th>Baud Rate</th><td>115200</td></tr>
-    <tr><th>Data Bits</th><td>8bit</td></tr>
-    <tr><th>Stop Bits</th><td>1bit</td></tr>
-    <tr><th>Parity</th><td>None</td></tr>
-    <tr><th>Flow Control</th><td>None</td></tr></tbody>
-    </table>
+
+3.ホストマシン上でシリアル・ターミナル・エミュレーターを起動し以下の設定でFPGAボードに接続します。
+
+項目 | 値
+------------- | -------------
+Port  | (※1)参照
+Baud Rate | 115200
+Data Bits | 8bit
+Stop Bits | 1bit
+Parity | None
+Flow Control | None
+
+   (※1) お使いのホストマシン環境により、ポート番号は異なります。
     
-    <div style="font-size:0.8em;">(※1) お使いのホストマシン環境により、ポート番号は異なります。
-    
-    <ul><li>[Linuxマシンをご利用の場合] 
-    "ls -l /dev/ttyUSB*"で表示される、2番目のデバイスを指定する必要があります。例えば、/dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, /dev/ttyUSB3と表示される場合、/dev/ttyUSB1をPortに指定します。また、指定するポートに対してchmod 666によってアクセス権を変更する必要があります。</li>
-    <li>[Macマシンをご利用の場合] 
-    "ls -l /dev/tty.*"で表示される、2番目のデバイスを指定する必要があります。例えば、/dev/tty.usbserial-000000, /dev/tty.usbserial-000001, /dev/tty.usbserial-000002, /dev/tty.usbserial-000003と表示される場合、/dev/tty.usbserial-000001をPortに指定します。</li>
-    <li>[Windowsマシンをご利用の場合]
-    デバイスマネージャの「ポート(COMとLPT)」に表示される、2番目のデバイスを指定する必要があります。例えば、USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), USB Serial Port(COM4)と表示される場合、COM2をPortに指定します。</li>
-    </ul></div>
+[Linuxマシンをご利用の場合] 
+    "ls -l /dev/ttyUSB*"で表示される、2番目のデバイスを指定する必要があります。例えば、/dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, /dev/ttyUSB3と表示される場合、/dev/ttyUSB1をPortに指定します。また、指定するポートに対してchmod 666によってアクセス権を変更する必要があります。
+[Macマシンをご利用の場合] 
+    "ls -l /dev/tty.*"で表示される、2番目のデバイスを指定する必要があります。例えば、/dev/tty.usbserial-000000, /dev/tty.usbserial-000001, /dev/tty.usbserial-000002, /dev/tty.usbserial-000003と表示される場合、/dev/tty.usbserial-000001をPortに指定します。
+[Windowsマシンをご利用の場合]
+    デバイスマネージャの「ポート(COMとLPT)」に表示される、2番目のデバイスを指定する必要があります。例えば、USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), USB Serial Port(COM4)と表示される場合、COM2をPortに指定します。
+
 
 ### 4.2.2 Step 2 (実行)
 1. シリアルターミナルにコマンドプロンプトが現れるまで待ちます。
@@ -156,7 +160,7 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 <!--
 # 5 ハードウェア構成を変更する場合
 
-以下を記述予定(<span style="color:red;">PALTECK様のサポート希望</span>)
+以下を記述予定(<span style="color:red;">PALTEK様のサポート希望</span>)
 
 * DisplayPortを利用する場合
 * HDMIの別のポートを利用する場合
