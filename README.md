@@ -115,7 +115,8 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 3. ホストマシン上でシリアル・ターミナル・エミュレーターを起動し以下の設定でFPGAボードに接続します。
     <table><thead><tr><th>項目</th><th>値</th></tr></thead><tbody><tr><th>Port</th><td>(※1)参照</td></tr><tr><th>Baud Rate</th><td>115200</td></tr><tr><th>Data Bits</th><td>8bit</td></tr><tr><th>Stop Bits</th><td>1bit</td></tr><tr><th>Parity</th><td>None</td></tr><tr><th>Flow Control</th><td>None</td></tr></tbody></table>
     <div style="font-size:0.8em;">(※1) お使いのホストマシン環境により、ポート番号は異なります。
-    <ul><li>Linuxマシンをご利用の場合、>Linuxマシンをご利用の場合、>Linuxマシンをご利用の場合、"ls -l /dev/ttyUSB*"で表示される、2番目のデバイスを指定する必要があります。例えば、/dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, /dev/ttyUSB3と表示される場合、/dev/ttyUSB1をPortに指定します。また、指定するポートに対してchmod 666によってアクセス権を変更する必要があります。</li>           <li>TODO: Windowsマシンをご利用の場合、...</li>
+    <ul><li>Linuxマシンをご利用の場合、"ls -l /dev/ttyUSB*"で表示される、2番目のデバイスを指定する必要があります。例えば、/dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, /dev/ttyUSB3と表示される場合、/dev/ttyUSB1をPortに指定します。また、指定するポートに対してchmod 666によってアクセス権を変更する必要があります。</li>           <li>TODO: Windowsマシンをご利用の場合、...</li>
+    <li>Windowsマシンをご利用の場合、デバイスマネージャの「ポート(COMとLPT)」に表示される、2番目のデバイスを指定する必要があります。例えば、USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), USB Serial Port(COM4)と表示される場合、COM2をPortに指定します。</li>
     <li>TODO: Macマシンをご利用の場合、</li>
     </ul></div>
 * TODO: 各OSでのシリアルポートの特定法やアクセス権限の設定について書く。
