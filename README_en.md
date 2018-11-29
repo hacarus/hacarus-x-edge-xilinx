@@ -113,7 +113,7 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
 ### 4.2.1 Step 1 (Preparation)
 1. Using the same method from section 4.1, copy the files to the Micro SD card and insert the card into the Micro SD slot ②.
 2. Switch the power switch ④ on the FPGA on and wait for the FPGA to boot up.
- * In the event that the micro USB is configured correctly, the *** LED should change from red to green before turning off. If the LED stays green, you may not have configured the FPGA correctly in section 4.1. In particular, please confirm that boot mode switch is set to (1,2,3,4)=(ON,OFF,OFF,OFF), and also that the micro SD card’s directory hierarchy is correct.
+ * In the event that the micro USB is configured correctly, the *** LED should change from red to green before turning off. If the LED stays green, you may not have configured the FPGA correctly in section 4.1. In particular, please confirm that the boot mode switch is set to (1,2,3,4)=(ON,OFF,OFF,OFF), and also that the micro SD card’s directory hierarchy is correct.
 3. Open a Serial Terminal Emulator (e.g. Tera Term) from your host machine and connect to the FPGA board with the Serial Port configured to the settings listed below.
 
     Item | Value
@@ -126,7 +126,6 @@ Parity | None
 Flow Control | None
    
    (※1) The port number will vary depending on what host machine you are using.
-[Linuxマシンをご利用の場合]
 [If you are using Linux:]
    Typing "ls -l /dev/ttyUSB*" will display your devices. You have to select the 2nd device. For example、if /dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, and /dev/ttyUSB3 are displayed、you have to select /dev/ttyUSB1. Furthermore、you have to change the permissions of the port that you select using chmod 666.
 [If you are using Mac:]
