@@ -65,19 +65,20 @@ To receive software or hardware support after 3 months from the time of purchase
 The functionality of this kit has been confirmed for the hardware configurations listed below. Please note that, in the event that the user decides to use hardware other than what is listed below (i.e. OS, USB camera), they will be unable to receive support for any issues that may arise thereafter.
 
 * Host Machine/Terminal Emulator
-    <table>
-    <thead><tr><th>OS</th><th>エミュレータ</th></tr></thead>
-    <tbody><tr><td>Ubunts 16.04</td><td>...</td></tr>
-    <tr><td>Mac OS ...</td><td>...</td></tr>
-    <tr><td>Windows 10 Home</td><td>Tera Term</td></tr></tbody>
-    </table>
-* USB3 Camera
-    <table>
-    <thead><tr><th>Model</th><th>Resolution</th></tr></thead>
-    <tbody><tr><td>e-con See3CAM_CU30</td><td>1920x1080</td></tr></tbody>
-    </table>
 
-Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected via HDMI. If a problem occurs using a different type of connection or resolution, please ??contact customer support??.
+OS| Emulator
+------------- | -------------
+Ubunts 16.04 | ...
+Mac OS ... | ...
+Windows 10 Home | Tera Term
+
+* USB3 Camera
+
+Model | Resolution
+------------- | -------------
+e-con See3CAM_CU30 | 1920x1080
+
+Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected via HDMI. If a problem occurs using a different type of connection or resolution, please contact customer support.
 
 
 ---
@@ -114,13 +115,25 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
 2. Switch the power switch ④ on the FPGA on and wait for the FPGA to boot up.
  * In the event that the micro USB is configured correctly, the *** LED should change from red to green before turning off. If the LED stays green, you may not have configured the FPGA correctly in section 4.1. In particular, please confirm that boot mode switch is set to (1,2,3,4)=(ON,OFF,OFF,OFF), and also that the micro SD card’s directory hierarchy is correct.
 3. Open a Serial Terminal Emulator (e.g. Tera Term) from your host machine and connect to the FPGA board with the Serial Port configured to the settings listed below.
-    <table><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody><tr><th>Port</th><td>(※1)Reference</td></tr><tr><th>Baud Rate</th><td>115200</td></tr><tr><th>Data Bits</th><td>8bit</td></tr><tr><th>Stop Bits</th><td>1bit</td></tr><tr><th>Parity</th><td>None</td></tr><tr><th>Flow Control</th><td>None</td></tr></tbody></table>
-    <div style="font-size:0.8em;">(※1) The port number will vary depending on what host machine you are using.
-    <ul><li>If you are using Linux、typing "ls -l /dev/ttyUSB*" will display your devices. You have to select the 2nd device. For example、if /dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, /dev/ttyUSB3 are displayed、you have to select /dev/ttyUSB1. Furthermore、you have to change the permissions of the port that you select using chmod 666. </li>           <li>If you are using Mac, typing "ls -l /dev/tty.*" will display your devices. You have to select the 2nd device. For example, if /dev/tty.usbserial-000000, /dev/tty.usbserial-000001, /dev/tty.usbserial-000002, and /dev/tty.usbserial-000003 are displayed, you have to select /dev/tty.usbserial-000001.</li>
-    <li>If you are using Windows OS, you will have to select the port that corresponds to the second COM/LPT port that is displayed in the device manager. For example, if the device manager shows USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), and USB Serial Port(COM4), you need to select the COM2 port.</li>
-    </ul></div>
-* TODO: TODO: How to identify the serial port and change the access permissions of the port for each OS.
-* TODO: Create an example for connecting to Tera Term.
+
+    Item | Value
+------------- | -------------
+Port  | refer to (※1)
+Baud Rate | 115200
+Data Bits | 8bit
+Stop Bits | 1bit
+Parity | None
+Flow Control | None
+   
+   (※1) The port number will vary depending on what host machine you are using.
+[Linuxマシンをご利用の場合]
+[If you are using Linux:]
+   Typing "ls -l /dev/ttyUSB*" will display your devices. You have to select the 2nd device. For example、if /dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, and /dev/ttyUSB3 are displayed、you have to select /dev/ttyUSB1. Furthermore、you have to change the permissions of the port that you select using chmod 666.
+[If you are using Mac:]
+    Typing "ls -l /dev/tty.*" will display your devices. You have to select the 2nd device. For example, if /dev/tty.usbserial-000000, /dev/tty.usbserial-000001, /dev/tty.usbserial-000002, and /dev/tty.usbserial-000003 are displayed, you have to select /dev/tty.usbserial-000001.
+[If you are using Windows OS:]
+    You will have to select the port that corresponds to the second COM/LPT port that is displayed in the device manager. For example, if the device manager shows USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), and USB Serial Port(COM4), you need to select the COM2 port.
+
 
 ### 4.2.2 Step 2 (Execution)
 1. Wait until the command prompt appears in the serial terminal window.
