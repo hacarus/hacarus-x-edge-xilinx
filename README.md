@@ -108,8 +108,6 @@ e-con See3CAM_CU30 | 1920x1080
 6.e-con See3CAM_CU30 USBカメラを、USBコネクタ➄に接続します。
 7.ブートモードスイッチ⑧(SW6)が、(1,2,3,4)=(ON, OFF, OFF, OFF)になっていることを確認します。
 
-<div style="font-size:0.8em;">(※)リブートスイッチ(④の2つのスイッチの一方)を押すことで、Linuxシステムをリブートすることができます。実行中に、誤ってUSBカメラをコネクタから抜いてしまった場合等、必要に応じてシステムを再起動することができます。</div>
-
 ## 4.2 アプリケーション[xyz]の実行
 
 ### 4.2.1 Step 1 (準備)
@@ -143,17 +141,21 @@ Flow Control | None
 ### 4.2.2 Step 2 (実行)
 1. シリアルターミナルにコマンドプロンプトが現れるまで待ちます。
 2. コマンドプロンプトが現れたら、次のコマンドを送信し、micro SDカードディレクトリに移動します。
+
 ```
 # cd /media/card
 ```
-3. 次の一連のコマンドを送信し、micro SDカード上の共有ライブラリをコピーします。
+3.次の一連のコマンドを送信し、micro SDカード上の共有ライブラリをコピーします。
+ 
 ```
 # cp lib/libopticalflow.so /usr/lib
 # cp gstreamer-1.0/libgstsdxopticalflow.so /usr/lib/gstreamer-1.0
 # cp lib/libgstsdxbase.so /usr/lib/gstreamer-1.0
 # cp lib/libgstsdxallocator.so /usr/lib/gstreamer-1.0
 ```
-4. 次のコマンドを実行し、アプリケーションを実行します。
+
+4.次のコマンドを実行し、アプリケーションを実行します。
+
 ```
 # gstdemo
 ```
