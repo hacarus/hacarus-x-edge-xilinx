@@ -86,10 +86,11 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
 
 ## 4.1 Board Setup
 [Setup procedure and illustrations will be updated.]
-1. Connect the 12V power plug to connector ③.
-2. Connect your output monitor to connector ⑦ using an HDMI cable. Alternatively, you can connect a DisplayPort cable to connector ⑥.
-3. Connect the Micro side of your Micro-USB cable to to the USB-UART (connector ①), and connect the USB side to a USB port on our host machine. 
-4. Next, take the SD card, which should contain the ZIP file that you downloaded (refer to Section 3.2), and plug it into the Micro-USB slot ②.
+1.Connect the 12V power plug to connector (3).
+2.Connect your output monitor to connector (7) using an HDMI cable. Alternatively, you can connect a DisplayPort cable to connector (6).
+3.Connect the Micro side of your Micro-USB cable to to the USB-UART (connector (1)), and connect the USB side to a USB port on our host machine. 
+4.Next, take the SD card, which should contain the ZIP file that you downloaded (refer to Section 3.2), and plug it into the Micro-USB slot (2).
+
     * It is necessary that the the Micro SD card be formatted with FAT.
     * Using any zip utility, unzip the ZIP file saved to your Micro SD card and copy the following files to your Micro SD card’s root directory (${SD_CARD}).
         * gstreamer-1.0/libgstsdxmotiondetection.so
@@ -101,20 +102,25 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
         * image.ub
         * video_cmd
         * README.txt
-6. Connect your e-con See3CAM_CU30 USB Camera to USB connector ➄.
-7. Confirm that the Boot Mode Switch ⑧ is set to (1,2,3,4)=(ON, OFF, OFF, OFF).
+
+5.Connect your e-con See3CAM_CU30 USB Camera to USB connector (5).
+6.Confirm that the Boot Mode Switch (8) is set to (1,2,3,4)=(ON, OFF, OFF, OFF).
+
 
 ![Board Overview](https://i.imgur.com/OQ5b8YY.png)
 
-<div style="font-size:0.8em;">(※)You can reboot the Linux system on the FPGA using the Reboot Switch(either of the ⑨ switches)Mid-execution、in the event that there are connection mistakes (e.g. USB camera being unplugged)、you can simply reboot the system using this switch when necessary.</div>
+<div style="font-size:0.8em;">(※)You can reboot the Linux system on the FPGA using the Reboot Switch(either of the (9) switches)Mid-execution、in the event that there are connection mistakes (e.g. USB camera being unplugged)、you can simply reboot the system using this switch when necessary.</div>
 
 ## 4.2 [xyz] Application Execution
 
 ### 4.2.1 Step 1 (Preparation)
-1. Using the same method from section 4.1, copy the files to the Micro SD card and insert the card into the Micro SD slot ②.
-2. Switch the power switch ④ on the FPGA on and wait for the FPGA to boot up.
+1.Using the same method from section 4.1, copy the files to the Micro SD card and insert the card into the Micro SD slot (2).
+2.Switch the power switch (4) on the FPGA on and wait for the FPGA to boot up.
+
  * In the event that the micro USB is configured correctly, the *** LED should change from red to green before turning off. If the LED stays green, you may not have configured the FPGA correctly in section 4.1. In particular, please confirm that the boot mode switch is set to (1,2,3,4)=(ON,OFF,OFF,OFF), and also that the micro SD card’s directory hierarchy is correct.
-3. Open a Serial Terminal Emulator (e.g. Tera Term) from your host machine and connect to the FPGA board with the Serial Port configured to the settings listed below.
+ * By flipping the reboot switch (either of the (9) switches), you can reboot the Linux system on the FPGA. Mid-execution, you may reboot the Linux system with the reboot switch if you need make adjustments to the hardware setup (USB camera, etc).
+
+3.Open a Serial Terminal Emulator (e.g. Tera Term) from your host machine and connect to the FPGA board with the Serial Port configured to the settings listed below.
 
     Item | Value
 ------------- | -------------
@@ -141,6 +147,7 @@ Flow Control | None
 ```
 # cd /media/card
 ```
+
 3.Next, enter the following sequence of commands in order to copy the shared library from the micro SD card to the FPGA.
 
 ```
