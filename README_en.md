@@ -89,19 +89,17 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
 1.Connect the 12V power plug to connector (3).
 2.Connect your output monitor to connector (7) using an HDMI cable. Alternatively, you can connect a DisplayPort cable to connector (6).
 3.Connect the Micro side of your Micro-USB cable to to the USB-UART (connector (1)), and connect the USB side to a USB port on our host machine. 
-4.Next, take the SD card, which should contain the ZIP file that you downloaded (refer to Section 3.2), and plug it into the Micro-USB slot (2).
+4.Next, take the SD card, which should contain the ZIP file that you downloaded (refer to Section 3.2), and plug it into the Micro-USB slot (2). Confirm that the file hierarchy is as stated below.
 
-    * It is necessary that the the Micro SD card be formatted with FAT.
-    * Using any zip utility, unzip the ZIP file saved to your Micro SD card and copy the following files to your Micro SD card’s root directory (${SD_CARD}).
-        * gstreamer-1.0/libgstsdxmotiondetection.so
-        * lib/libgstsdxallocator.so
-        * lib/libgstsdxbase.so
-        * lib/libmotiondetection.so
-        * BOOT.BIN
-        * gstdemo
-        * image.ub
-        * video_cmd
-        * README.txt
+ * [SD_CARD]/gstreamer-1.0/libgstsdxmotiondetection.so
+ * [SD_CARD]/lib/libgstsdxallocator.so
+ * [SD_CARD]/lib/libgstsdxbase.so
+ * [SD_CARD]/lib/libmotiondetection.so
+ * [SD_CARD]/BOOT.BIN
+ * [SD_CARD]/gstdemo
+ * [SD_CARD]/image.ub
+ * [SD_CARD]/video_cmd
+ * [SD_CARD]/README.txt
 
 5.Connect your e-con See3CAM_CU30 USB Camera to USB connector (5).
 6.Confirm that the Boot Mode Switch (8) is set to (1,2,3,4)=(ON, OFF, OFF, OFF).
