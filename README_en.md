@@ -135,19 +135,23 @@ Flow Control | None
 
 
 ### 4.2.2 Step 2 (Execution)
-1. Wait until the command prompt appears in the serial terminal window.
-2. When the command prompt appears, type in the following command to change to the SD card directory.
+1.Wait until the command prompt appears in the serial terminal window.
+2.When the command prompt appears, type in the following command to change to the SD card directory.
+
 ```
 # cd /media/card
 ```
-3. Next, enter the following sequence of commands in order to copy the shared library from the micro SD card to the FPGA.
+3.Next, enter the following sequence of commands in order to copy the shared library from the micro SD card to the FPGA.
+
 ```
 # cp lib/libopticalflow.so /usr/lib
 # cp gstreamer-1.0/libgstsdxopticalflow.so /usr/lib/gstreamer-1.0
 # cp lib/libgstsdxbase.so /usr/lib/gstreamer-1.0
 # cp lib/libgstsdxallocator.so /usr/lib/gstreamer-1.0
 ```
-2. Enter the following command in order to execute the application.
+
+4.Enter the following command in order to execute the application.
+
 ```
 # gstdemo
 ```
