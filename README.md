@@ -50,7 +50,7 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 
 ## 3.2 ソフトウェア
 
-* ホストマシン上のシリアルターミナルエミュレータ(Tera Term等)
+* ホストマシン上のシリアルターミナルエミュレータ
 * SDカード・インストール・ファイル
     * ダウンロードは本キットに同梱されるユーザガイドに記載のダウンロードサイトにアクセスしてください
 
@@ -68,9 +68,9 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 
 OS| エミュレータ
 ------------- | -------------
-Ubunts 16.04 | ...
-Mac OS ... | ...
-Windows 10 Home | Tera Term
+Ubunts 16.04 | gnome-terminal
+Mac OS  | Terminal.app
+Windows 10 Home | PuTTY
 
 * USB3カメラ
 
@@ -130,13 +130,23 @@ Flow Control | None
 
    (*2) お使いのホストマシン環境により、ポート番号は異なります。
     
-[Linuxマシンをご利用の場合] 
+ * シリアルポートの確認方法
+    * Linuxマシンをご利用の場合
     "ls -l /dev/ttyUSB*"で表示される、2番目のデバイスを指定する必要があります。例えば、/dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, /dev/ttyUSB3と表示される場合、/dev/ttyUSB1をPortに指定します。また、指定するポートに対してchmod 666によってアクセス権を変更する必要があります。
-[Macマシンをご利用の場合] 
+    * Macマシンをご利用の場合
     "ls -l /dev/tty.*"で表示される、2番目のデバイスを指定する必要があります。例えば、/dev/tty.usbserial-000000, /dev/tty.usbserial-000001, /dev/tty.usbserial-000002, /dev/tty.usbserial-000003と表示される場合、/dev/tty.usbserial-000001をPortに指定します。
-[Windowsマシンをご利用の場合]
+    * Windowsマシンをご利用の場合
     デバイスマネージャの「ポート(COMとLPT)」に表示される、2番目のデバイスを指定する必要があります。例えば、USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), USB Serial Port(COM4)と表示される場合、COM2をPortに指定します。
 
+ * シリアルポートの接続方法（ポートが上記例の場合）
+    * Linuxマシンをご利用の場合
+    gnome-terminalを起動し、"screen /dev/ttyUSB1 115200" を入力することにより、ボーレート115200でシリアルポートに接続されます。
+接続を終了する場合は、screen の画面で [control]+[a] を押して、次に [control]+[k] を押すことで終了します。
+    * Macマシンをご利用の場合
+    Terminal.appを起動し、"screen /dev/tty.usbserial-000000 115200" を入力することにより、ボーレート115200でシリアルポートに接続されます。
+    接続を終了する場合は、screen の画面で [control]+[a] を押して、次に [k] を押します。画面左下に Really kill this window [y/n] と表示されるので、 [y] を押すことで終了します。
+    * Windowsマシンをご利用の場合
+    PuTTYを起動します。PuTTY Configuration で Connection typeで"Serial"を選択し、Serial lineを"COM2"、Speedを"115200"に設定してOpenをクリックすることで、ボーレート115200でシリアルポートと接続することができます。
 
 ### 4.2.2 Step 2 (実行)
 1. シリアルターミナルにコマンドプロンプトが現れるまで待ちます。
