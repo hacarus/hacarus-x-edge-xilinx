@@ -85,7 +85,7 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
 # 4. Installation and Method of Operation
 
 ## 4.1 Board Setup
-[Setup procedure and illustrations will be updated.]
+
 1.Connect the 12V power plug to connector (3).
 2.Connect your output monitor to connector (7) using an HDMI cable. Alternatively, you can connect a DisplayPort cable to connector (6).
 3.Connect the Micro side of your Micro-USB cable to to the USB-UART (connector (1)), and connect the USB side to a USB port on our host machine. 
@@ -120,16 +120,16 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
 
 3.Open a Serial Terminal Emulator (e.g. Tera Term) from your host machine and connect to the FPGA board with the Serial Port configured to the settings listed below.
 
-    Item | Value
+Item | Value
 ------------- | -------------
-Port  | refer to (※1)
+Port  | refer to (*2)
 Baud Rate | 115200
 Data Bits | 8bit
 Stop Bits | 1bit
 Parity | None
 Flow Control | None
    
-   (※1) The port number will vary depending on what host machine you are using.
+   (*2) The port number will vary depending on what host machine you are using.
 [If you are using Linux:]
    Typing "ls -l /dev/ttyUSB*" will display your devices. You have to select the 2nd device. For example、if /dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, and /dev/ttyUSB3 are displayed、you have to select /dev/ttyUSB1. Furthermore、you have to change the permissions of the port that you select using chmod 666.
 [If you are using Mac:]
