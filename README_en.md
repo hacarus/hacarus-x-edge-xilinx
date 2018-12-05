@@ -155,19 +155,16 @@ Flow Control | None
 # cd /media/card
 ```
 
-3.Next, enter the following sequence of commands in order to copy the shared library from the micro SD card to the FPGA.
+3.Next, enter the following command in order to copy the shared library from the micro SD card to the FPGA.
 
 ```
-# cp lib/libopticalflow.so /usr/lib
-# cp gstreamer-1.0/libgstsdxopticalflow.so /usr/lib/gstreamer-1.0
-# cp lib/libgstsdxbase.so /usr/lib/gstreamer-1.0
-# cp lib/libgstsdxallocator.so /usr/lib/gstreamer-1.0
+# bash init.sh
 ```
 
 4.Enter the following command in order to execute the application.
 
 ```
-# gstdemo
+# bash run.sh
 ```
 
 <!--
@@ -183,5 +180,5 @@ The following procedures will be written in the future.(<span style="color:red;"
 ---
 # 5 Reference Materials
 
-* [Hacarus Sparse AI Kit for FPGA – User Manual](https://hacarus.com/ja/fpga-kit/XXXX)
+* [Hacarus Sparse AI Kit for FPGA - User Manual](https://hacarus.com/ja/fpga-kit/XXXX)
 * [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://www.xilinx.com/products/boards-and-kits/zcu104.html)

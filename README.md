@@ -155,19 +155,17 @@ Flow Control | None
 ```
 # cd /media/card
 ```
-3.次の一連のコマンドを送信し、micro SDカード上の共有ライブラリをコピーします。
+
+3.次のコマンドを送信し、micro SDカード上の共有ライブラリをコピーします。
  
 ```
-# cp lib/libopticalflow.so /usr/lib
-# cp gstreamer-1.0/libgstsdxopticalflow.so /usr/lib/gstreamer-1.0
-# cp lib/libgstsdxbase.so /usr/lib/gstreamer-1.0
-# cp lib/libgstsdxallocator.so /usr/lib/gstreamer-1.0
+# bash init.sh
 ```
 
-4.次のコマンドを実行し、アプリケーションを実行します。
+4.次のコマンドを送信し、アプリケーションを実行します。
 
 ```
-# gstdemo
+# bash run.sh
 ```
 
 <!--
