@@ -50,7 +50,7 @@ The hardware listed below is required to operate the Hacarus Sparse AI Kit.
 
 ## 3.2 Software
 
-* Serial Terminal Emulator (e.g. Tera Term)
+* Serial Terminal Emulator
 * SD Card Installation File
     * In regards to the required download files, please refer to the download sites that are listed in the User Guide included with this kit.
 
@@ -68,9 +68,9 @@ The functionality of this kit has been confirmed for the hardware configurations
 
 OS| Emulator
 ------------- | -------------
-Ubunts 16.04 | ...
-Mac OS ... | ...
-Windows 10 Home | Tera Term
+Ubunts 16.04 | gnome-terminal
+Mac OS | Terminal.app
+Windows 10 Home | PuTTY
 
 * USB3 Camera
 
@@ -118,7 +118,7 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
  * In the event that the micro USB is configured correctly, the *** LED should change from red to green before turning off. If the LED stays green, you may not have configured the FPGA correctly in section 4.1. In particular, please confirm that the boot mode switch is set to (1,2,3,4)=(ON,OFF,OFF,OFF), and also that the micro SD card’s directory hierarchy is correct.
  * By flipping the reboot switch (either of the (9) switches), you can reboot the Linux system on the FPGA. Mid-execution, you may reboot the Linux system with the reboot switch if you need make adjustments to the hardware setup (USB camera, etc).
 
-3.Open a Serial Terminal Emulator (e.g. Tera Term) from your host machine and connect to the FPGA board with the Serial Port configured to the settings listed below.
+3.Open a Serial Terminal Emulator (e.g. PuTTY, Tera Term) from your host machine and connect to the FPGA board with the Serial Port configured to the settings listed below.
 
 Item | Value
 ------------- | -------------
@@ -130,12 +130,21 @@ Parity | None
 Flow Control | None
    
    (*2) The port number will vary depending on what host machine you are using.
-[If you are using Linux:]
-   Typing "ls -l /dev/ttyUSB*" will display your devices. You have to select the 2nd device. For example、if /dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, and /dev/ttyUSB3 are displayed、you have to select /dev/ttyUSB1. Furthermore、you have to change the permissions of the port that you select using chmod 666.
-[If you are using Mac:]
-    Typing "ls -l /dev/tty.*" will display your devices. You have to select the 2nd device. For example, if /dev/tty.usbserial-000000, /dev/tty.usbserial-000001, /dev/tty.usbserial-000002, and /dev/tty.usbserial-000003 are displayed, you have to select /dev/tty.usbserial-000001.
-[If you are using Windows OS:]
-    You will have to select the port that corresponds to the second COM/LPT port that is displayed in the device manager. For example, if the device manager shows USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), and USB Serial Port(COM4), you need to select the COM2 port.
+
+ * In order to confirm that your computer's serial port is connected to the FPGA:
+    * If you are using Linux,
+        Typing "ls -l /dev/ttyUSB*" will display your devices. You have to select the 2nd device. For example、if /dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, and /dev/ttyUSB3 are displayed、you have to select /dev/ttyUSB1. Furthermore、you have to change the permissions of the port that you select using chmod 666.
+    * If you are using Mac,
+        Typing "ls -l /dev/tty.*" will display your devices. You have to select the 2nd device. For example, if /dev/tty.usbserial-000000, /dev/tty.usbserial-000001, /dev/tty.usbserial-000002, and /dev/tty.usbserial-000003 are displayed, you have to select /dev/tty.usbserial-000001.
+    * If you are using Windows OS,
+        You will have to select the port that corresponds to the second COM/LPT port that is displayed in the device manager. For example, if the device manager shows USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), and USB Serial Port(COM4), you need to select the COM2 port.
+ * In order to connect your computer to the FPGA's serial port:
+    * If you are using Linux,
+        Open gnome-terminal, type "screen /dev/ttyUSB1 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, pressing Ctrl+a followed by Ctrl+k using your keyboard will close your connection.
+    * If you are using Mac,
+        Execute Terminal.app, type "screen /dev/tty.usbserial-000000 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard.. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
+    * If you are using Windows OS,
+        Execute PuTTY. Open the PuTTY Configuration window and change Connection type to "Serial". Next, change Serial line to "COM2" and Speed to "115200". Clicking Open will finalize these changes and enable you to connect to the serial port of the FPGA board with a Baud Rate of 115200.
 
 
 ### 4.2.2 Step 2 (Execution)
