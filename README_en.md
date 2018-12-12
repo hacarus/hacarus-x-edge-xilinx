@@ -98,6 +98,8 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
  * [SD_CARD]/BOOT.BIN
  * [SD_CARD]/gstdemo
  * [SD_CARD]/image.ub
+ * [SD_CARD]/init.sh
+ * [SD_CARD]/run.sh
  * [SD_CARD]/video_cmd
  * [SD_CARD]/README.txt
 
@@ -140,7 +142,7 @@ Flow Control | None
         You will have to select the port that corresponds to the second COM/LPT port that is displayed in the device manager. For example, if the device manager shows USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), and USB Serial Port(COM4), you need to select the COM2 port.
  * In order to connect your computer to the FPGA's serial port:
     * If you are using Linux,
-        Open gnome-terminal, type "screen /dev/ttyUSB1 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, pressing Ctrl+a followed by Ctrl+k using your keyboard will close your connection.
+        Open gnome-terminal, type "screen /dev/ttyUSB1 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard.. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
     * If you are using Mac,
         Execute Terminal.app, type "screen /dev/tty.usbserial-000000 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard.. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
     * If you are using Windows OS,

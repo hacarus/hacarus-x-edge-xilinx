@@ -99,6 +99,8 @@ e-con See3CAM_CU30 | 1920x1080
 * [SD_CARD]/BOOT.BIN
 * [SD_CARD]/gstdemo
 * [SD_CARD]/image.ub
+* [SD_CARD]/init.sh
+* [SD_CARD]/run.sh
 * [SD_CARD]/video_cmd
 * [SD_CARD]/README.txt
 
@@ -141,7 +143,7 @@ Flow Control | None
  * シリアルポートの接続方法（ポートが上記例の場合）
     * Linuxマシンをご利用の場合
     gnome-terminalを起動し、"screen /dev/ttyUSB1 115200" を入力することにより、ボーレート115200でシリアルポートに接続されます。
-接続を終了する場合は、screen の画面で [control]+[a] を押して、次に [control]+[k] を押すことで終了します。
+    接続を終了する場合は、screen の画面で [control]+[a] を押して、次に [k] を押します。画面左下に Really kill this window [y/n] と表示されるので、 [y] を押すことで終了します。
     * Macマシンをご利用の場合
     Terminal.appを起動し、"screen /dev/tty.usbserial-000000 115200" を入力することにより、ボーレート115200でシリアルポートに接続されます。
     接続を終了する場合は、screen の画面で [control]+[a] を押して、次に [k] を押します。画面左下に Really kill this window [y/n] と表示されるので、 [y] を押すことで終了します。
