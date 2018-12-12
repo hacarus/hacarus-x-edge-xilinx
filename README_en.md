@@ -118,7 +118,7 @@ However, please only change the values within the range that is specified below.
 Furthermore, changing the Definition Names will result in the program not reading the configuration file correctly, so please refrain from doing so.
 The minimum and maximum values have yet to be decided.
 
-Definition Name| Default Value | Minimum Value | Maximum Value | 内容 
+Definition Name| Default Value | Minimum Value | Maximum Value | Details 
 ------------- |  ------------- | ------------- | ------------- | -------------
 MD_THRESHOLD |  5 | 1 | 100 | Smaller values increase the sensitivity of the motion detection.
 THRE_RECT_MIN_W |  5 | 1 | Maximum width of rectangles |  Minimum width of rectangles(*2)
