@@ -111,6 +111,25 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
 
 <div style="font-size:0.8em;">(※)You can reboot the Linux system on the FPGA using the Reboot Switch(either of the (9) switches)Mid-execution、in the event that there are connection mistakes (e.g. USB camera being unplugged)、you can simply reboot the system using this switch when necessary.</div>
 
+### 4.1.1 Regarding app.cfg
+
+You may change the values in this configuration file as necessary.
+However, please only change the values within the range that is specified below.
+Furthermore, changing the Definition Names will result in the program not reading the configuration file correctly, so please refrain from doing so.
+The minimum and maximum values have yet to be decided.
+
+Definition Name| Default Value | Minimum Value | Maximum Value | 内容 
+------------- |  ------------- | ------------- | ------------- | -------------
+MD_THRESHOLD |  5 | 1 | 100 | Smaller values increase the sensitivity of the motion detection.
+THRE_RECT_MIN_W |  5 | 1 | Maximum width of rectangles |  Minimum width of rectangles(*2)
+THRE_RECT_MIN_H |  5 | 1 | Maximum height of rectangles |  Minimum height of rectangles(*2)
+RECT_BORDER_W |  3 | 1 | 10 | Rectangle border thickness
+THRE_MIN_G | 0.002 | > 0 | < THRE_MAX_G | Smaller values decrease the number of rectangles.
+THRE_MAX_G | 0.2 | >THRE_MIN_G | 1 | Larger values decrease the number of rectangles.
+THRE_SUP_D | 0.01 | 0 | 1.00 | Smaller values decrease the number of rectangles
+
+(*2) Rectangles with width less than THRE_RECT_MIN_W and height less than THRE_RECT_MIN_H are not printed to the monitor.
+
 ## 4.2 [xyz] Application Execution
 
 ### 4.2.1 Step 1 (Preparation)
@@ -124,14 +143,14 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
 
 Item | Value
 ------------- | -------------
-Port  | refer to (*2)
+Port  | refer to (*3)
 Baud Rate | 115200
 Data Bits | 8bit
 Stop Bits | 1bit
 Parity | None
 Flow Control | None
    
-   (*2) The port number will vary depending on what host machine you are using.
+   (*3) The port number will vary depending on what host machine you are using.
 
  * In order to confirm that your computer's serial port is connected to the FPGA:
     * If you are using Linux,
