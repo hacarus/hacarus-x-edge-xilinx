@@ -34,9 +34,9 @@ A USB camera input and an HDMI/DisplayPort monitor output is used for motion det
 ---
 # 3. System Requirements
 
-## 3.1 Required Items
+## 3.1 Hardware
 
-The items listed below are required to operate the Hacarus Sparse AI Kit.
+The hardware listed below is required to operate this Kit.
 
 * Items included in ZCU104
     * ZCU104 Evaluation Board
@@ -45,8 +45,6 @@ The items listed below are required to operate the Hacarus Sparse AI Kit.
     * Power Cord and Adapter
     * Micro USB Cable (used for connecting the ZCU104 board to the host machine)
     * Micro SD Card
-* Items included in the Hacarus Sparse AI Kit
-    * Technical Documentation
 * Items that must be provided by the user
     * Any DisplayPort or HDMI input Monitor with the one of the resolutions listed below.
         * 3840x2160
@@ -54,13 +52,19 @@ The items listed below are required to operate the Hacarus Sparse AI Kit.
         * 1280x720
     * Display Port Cable or HDMI Cable
 
-## 3.2 License
+## 3.2 Software
+
+* Serial Terminal Emulator
+* SD Card Installation File
+    * You can get required files from download website which is informed in purchase.
+
+## 3.3 License
 
 The license for this kit becomes effective immediately after purchase. The license is included with 3 months of software and hardware support, as well as software updates.
 
 To receive software or hardware support after 3 months from the time of purchase, please contact customer support.
 
-## 3.3 Compatibility
+## 3.4 Compatibility
 
 The functionality of this kit has been confirmed for the hardware configurations listed below. Please note that, in the event that the user decides to use hardware other than what is listed below (i.e. OS, USB camera), they will be unable to receive support for any issues that may arise thereafter.
 
