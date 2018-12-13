@@ -111,25 +111,6 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
 
 <div style="font-size:0.8em;">(※)You can reboot the Linux system on the FPGA using the Reboot Switch(either of the (9) switches)Mid-execution、in the event that there are connection mistakes (e.g. USB camera being unplugged)、you can simply reboot the system using this switch when necessary.</div>
 
-### 4.1.1 Regarding app.cfg
-
-You may change the values in this configuration file as necessary.
-However, please only change the values within the range that is specified below.
-Furthermore, changing the Definition Names will result in the program not reading the configuration file correctly, so please refrain from doing so.
-The minimum and maximum values have yet to be decided.
-
-Definition Name| Default Value | Minimum Value | Maximum Value | Details 
-------------- |  ------------- | ------------- | ------------- | -------------
-MD_THRESHOLD |  5 | 1 | 100 | Smaller values increase the sensitivity of the motion detection.
-THRE_RECT_MIN_W |  5 | 1 | Maximum width of rectangles |  Minimum width of rectangles(*2)
-THRE_RECT_MIN_H |  5 | 1 | Maximum height of rectangles |  Minimum height of rectangles(*2)
-RECT_BORDER_W |  3 | 1 | 10 | Rectangle border thickness
-THRE_MIN_G | 0.002 | > 0 | < THRE_MAX_G | Smaller values decrease the number of rectangles.
-THRE_MAX_G | 0.2 | >THRE_MIN_G | 1 | Larger values decrease the number of rectangles.
-THRE_SUP_D | 0.01 | 0 | 1.00 | Smaller values decrease the number of rectangles
-
-(*2) Rectangles with width less than THRE_RECT_MIN_W and height less than THRE_RECT_MIN_H are not printed to the monitor.
-
 ## 4.2 [xyz] Application Execution
 
 ### 4.2.1 Step 1 (Preparation)
@@ -143,14 +124,14 @@ THRE_SUP_D | 0.01 | 0 | 1.00 | Smaller values decrease the number of rectangles
 
 Item | Value
 ------------- | -------------
-Port  | refer to (*3)
+Port  | refer to (*2)
 Baud Rate | 115200
 Data Bits | 8bit
 Stop Bits | 1bit
 Parity | None
 Flow Control | None
    
-   (*3) The port number will vary depending on what host machine you are using.
+   (*w) The port number will vary depending on what host machine you are using.
 
  * In order to confirm that your computer's serial port is connected to the FPGA:
     * If you are using Linux,
@@ -188,18 +169,28 @@ Flow Control | None
 # bash run.sh
 ```
 
-<!--
-# 5 In The Event That You Modify The Hardware Configuration
+# 5 Application Settings
 
-The following procedures will be written in the future.(<span style="color:red;">Support from PALTECK desired.</span>)
+## 5.1 Cloud Motion Detection Settings
 
-* If you use DisplayPort
-* If you use a different HDMI port
-* If you use a different USB camera
--->
+When necessary, the user may modify the Cloud Motion Detection settings that are written in the app.cfg configuration file. However, the user may only adjust the values of the variables listed below within the specified range (between the specified minimum and maximum values).
+Furthermore, if you change the names of any of the variables below (Example: Changing MD_THRESHOLD to MD_THRESH), the changed variable will be ignored by the program, so please refrain from doing so.
+The minimum and maximum values have yet to be finalized.
+
+Variable| Default Value | Minimum Value | Maximum Value | Details 
+------------- |  ------------- | ------------- | ------------- | -------------
+MD_THRESHOLD |  5 | 1 | 100 | Smaller values increase the sensitivity of the motion detection.
+THRE_RECT_MIN_W |  5 | 1 | Maximum width of rectangles |  Minimum width of rectangles(*3)
+THRE_RECT_MIN_H |  5 | 1 | Maximum height of rectangles |  Minimum height of rectangles(*3)
+RECT_BORDER_W |  3 | 1 | 10 | Rectangle border thickness
+THRE_MIN_G | 0.002 | > 0 | < THRE_MAX_G | Smaller values decrease the number of rectangles.
+THRE_MAX_G | 0.2 | > THRE_MIN_G | 1 | Larger values decrease the number of rectangles.
+THRE_SUP_D | 0.01 | 0 | 1.00 | Smaller values decrease the number of rectangles
+
+(*3) Rectangles with width less than THRE_RECT_MIN_W and height less than THRE_RECT_MIN_H are not printed to the monitor.
 
 ---
-# 5 Reference Materials
+# 6 Reference Materials
 
 * [Hacarus Sparse AI Kit for FPGA - User Manual](https://hacarus.com/ja/fpga-kit/XXXX)
 * [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://www.xilinx.com/products/boards-and-kits/zcu104.html)
