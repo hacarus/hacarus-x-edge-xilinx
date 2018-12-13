@@ -9,7 +9,7 @@ This kit consists of the Xilinx ZCU104 Evaluation Board, software which can inst
 
 ## 1.1 Release Notes
 
-- 2018/12/XX Online Motion Detection Functionality Release
+- 2018/12/XX Motion Detection Functionality Release
 
 ## 1.2 Support
 
@@ -131,7 +131,7 @@ Stop Bits | 1bit
 Parity | None
 Flow Control | None
    
-   (*2) The port number will vary depending on what host machine you are using.
+   (*w) The port number will vary depending on what host machine you are using.
 
  * In order to confirm that your computer's serial port is connected to the FPGA:
     * If you are using Linux,
@@ -142,9 +142,9 @@ Flow Control | None
         You will have to select the port that corresponds to the second COM/LPT port that is displayed in the device manager. For example, if the device manager shows USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), and USB Serial Port(COM4), you need to select the COM2 port.
  * In order to connect your computer to the FPGA's serial port:
     * If you are using Linux,
-        Open gnome-terminal, type "screen /dev/ttyUSB1 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard.. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
+        Open gnome-terminal, type "screen /dev/ttyUSB1 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
     * If you are using Mac,
-        Execute Terminal.app, type "screen /dev/tty.usbserial-000000 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard.. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
+        Execute Terminal.app, type "screen /dev/tty.usbserial-000000 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
     * If you are using Windows OS,
         Execute PuTTY. Open the PuTTY Configuration window and change Connection type to "Serial". Next, change Serial line to "COM2" and Speed to "115200". Clicking Open will finalize these changes and enable you to connect to the serial port of the FPGA board with a Baud Rate of 115200.
 
@@ -169,18 +169,28 @@ Flow Control | None
 # bash run.sh
 ```
 
-<!--
-# 5 In The Event That You Modify The Hardware Configuration
+# 5 Application Settings
 
-The following procedures will be written in the future.(<span style="color:red;">Support from PALTECK desired.</span>)
+## 5.1 Motion Detection Settings
 
-* If you use DisplayPort
-* If you use a different HDMI port
-* If you use a different USB camera
--->
+When necessary, the user may modify the Motion Detection settings that are written in the app.cfg configuration file. However, the user may only adjust the values of the variables listed below within the specified range (between the specified minimum and maximum values).
+Furthermore, if you change the names of any of the variables below (Example: Changing MD_THRESHOLD to MD_THRESH), the changed variable will be ignored by the program, so please refrain from doing so.
+The minimum and maximum values have yet to be finalized.
+
+Variable| Default Value | Minimum Value | Maximum Value | Details 
+------------- |  ------------- | ------------- | ------------- | -------------
+MD_THRESHOLD |  5 | 1 | 100 | Smaller values increase the sensitivity of the motion detection.
+THRE_RECT_MIN_W |  5 | 1 | Maximum width of rectangles |  Minimum width of rectangles(*3)
+THRE_RECT_MIN_H |  5 | 1 | Maximum height of rectangles |  Minimum height of rectangles(*3)
+RECT_BORDER_W |  3 | 1 | 10 | Rectangle border thickness
+THRE_MIN_G | 0.002 | > 0 | < THRE_MAX_G | Smaller values decrease the number of rectangles.
+THRE_MAX_G | 0.2 | > THRE_MIN_G | 1 | Larger values decrease the number of rectangles.
+THRE_SUP_D | 0.01 | 0 | 1.00 | Smaller values decrease the number of rectangles
+
+(*3) Rectangles with width less than THRE_RECT_MIN_W and height less than THRE_RECT_MIN_H are not printed to the monitor.
 
 ---
-# 5 Reference Materials
+# 6 Reference Materials
 
 * [Hacarus Sparse AI Kit for FPGA - User Manual](https://hacarus.com/ja/fpga-kit/XXXX)
 * [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://www.xilinx.com/products/boards-and-kits/zcu104.html)
