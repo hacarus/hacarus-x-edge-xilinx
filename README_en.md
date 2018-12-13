@@ -171,7 +171,7 @@ Flow Control | None
 
 # 5 Application Settings
 
-## 5.1 Cloud Motion Detection Settings
+## 5.1 Motion Detection Settings
 
 When necessary, the user may modify the Motion Detection settings that are written in the app.cfg configuration file. However, the user may only adjust the values of the variables listed below within the specified range (between the specified minimum and maximum values).
 Furthermore, if you change the names of any of the variables below (Example: Changing MD_THRESHOLD to MD_THRESH), the changed variable will be ignored by the program, so please refrain from doing so.
