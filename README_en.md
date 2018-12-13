@@ -9,7 +9,7 @@ This kit consists of the Xilinx ZCU104 Evaluation Board, software which can inst
 
 ## 1.1 Release Notes
 
-- 2018/12/XX Cloud Motion Detection Functionality Release
+- 2018/12/XX Motion Detection Functionality Release
 
 ## 1.2 Support
 
