@@ -36,23 +36,27 @@ A USB camera input and an HDMI/DisplayPort monitor output is used for motion det
 
 ## 3.1 Hardware
 
-The hardware listed below is required to operate the Hacarus Sparse AI Kit.
+The hardware listed below is required to operate this Kit.
 
-* ZCU104 Evaluation Board
-* Micro USB Cable (used for connecting the ZCU104 board to the host machine)
-* Micro SD Card
-* Any DisplayPort or HDMI input Monitor with the one of the resolutions listed below.
-    * 3840x2160
-    * 1920x1080
-    * 1280x720
-* Display Port Cable or HDMI Cable
-* e-con Systems See3CAM_CU30_CLT_TC USB Camera
+* Items included in ZCU104
+    * ZCU104 Evaluation Board
+    * e-con Systems See3CAM_CU30_CLT_TC USB Camera
+    * 4-Port USB 3.0 Hub
+    * Power Cord and Adapter
+    * Micro USB Cable (used for connecting the ZCU104 board to the host machine)
+    * Micro SD Card
+* Items that must be provided by the user
+    * Any DisplayPort or HDMI input Monitor with the one of the resolutions listed below.
+        * 3840x2160
+        * 1920x1080
+        * 1280x720
+    * Display Port Cable or HDMI Cable
 
 ## 3.2 Software
 
 * Serial Terminal Emulator
 * SD Card Installation File
-    * In regards to the required download files, please refer to the download sites that are listed in the User Guide included with this kit.
+    * You can get required files from download website which is informed in purchase.
 
 ## 3.3 License
 
