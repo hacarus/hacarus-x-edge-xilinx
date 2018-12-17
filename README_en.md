@@ -183,13 +183,13 @@ The minimum and maximum values have yet to be finalized.
 
 Variable| Default Value | Minimum Value | Maximum Value | Details 
 ------------- |  ------------- | ------------- | ------------- | -------------
-MD_THRESHOLD |  5 | 1 | 100 | Smaller values increase the sensitivity of the motion detection.
-THRE_RECT_MIN_W |  5 | 1 | Maximum width of rectangles |  Minimum width of rectangles(*3)
-THRE_RECT_MIN_H |  5 | 1 | Maximum height of rectangles |  Minimum height of rectangles(*3)
+MD_THRESHOLD |  15 | 1 | 100 | Smaller values increase the sensitivity of the motion detection.
+THRE_RECT_MIN_W |  20 | 1 | Maximum width of rectangles |  Minimum width of rectangles(*3)
+THRE_RECT_MIN_H |  20 | 1 | Maximum height of rectangles |  Minimum height of rectangles(*3)
 RECT_BORDER_W |  3 | 1 | 10 | Rectangle border thickness
 THRE_MIN_G | 0.002 | > 0 | < THRE_MAX_G | Smaller values decrease the number of rectangles.
-THRE_MAX_G | 0.2 | > THRE_MIN_G | 1 | Larger values decrease the number of rectangles.
-THRE_SUP_D | 0.01 | 0 | 1.00 | Smaller values decrease the number of rectangles
+THRE_MAX_G | 0.7 | > THRE_MIN_G | 1 | Larger values decrease the number of rectangles.
+THRE_SUP_D | 0.1 | 0 | 1.00 | Smaller values decrease the number of rectangles
 
 (*3) Rectangles with width less than THRE_RECT_MIN_W and height less than THRE_RECT_MIN_H are not printed to the monitor.
 
