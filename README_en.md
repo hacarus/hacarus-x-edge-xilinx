@@ -1,9 +1,9 @@
-# Hacarus Sparse AI Kit for FPGA – Technical Document(English Version)
+# Hacarus Sparse AI Kit – Technical Document(English Version)
 
 
 # 1. Introduction
 
-Hacarus Sparse AI Kit for FPGA is a cutting-edge, high-speed, low-power AI starter kit which is capable of machine learning and inference.
+Hacarus Sparse AI Kit is a cutting-edge, high-speed, low-power AI starter kit which is capable of machine learning and inference.
 
 This kit consists of the Xilinx ZCU104 Evaluation Board, software which can installed through an SD card, and AI hardware files.
 
@@ -13,14 +13,14 @@ This kit consists of the Xilinx ZCU104 Evaluation Board, software which can inst
 
 ## 1.2 Support
 
-We offer technical support via Email to customers that have purchased this kit. For customers that require support, please send an Email including the FPGA Board’s serial number to <fpga-support@hacarus.com>.
+We offer technical support via Email to customers that have purchased the Hacarus Sparse AI Kit. For customers that require support, please send an Email including the FPGA Board’s serial number to <fpga-support@hacarus.com>.
 
 ---
 # 2. Overview
 
 ## 2.1 System Configuration
 
-This kit is put together using Hacarus’s original AI algorithms which are hardware accelerated through the [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://japan.xilinx.com/products/boards-and-kits/zcu104.html). (For the sake of simplicity, it will be called ZCU104 Evaluation Kit henceforth.) The ZCU104 Evaluation Kit is an FPGA platform setup for the sake of embedded vision applications, so peripheral devices and interfaces are furnished with the board itself.
+The Hacarus Sparse AI Kit is put together using Hacarus’s original AI algorithms which are hardware accelerated through the [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://japan.xilinx.com/products/boards-and-kits/zcu104.html). (For the sake of simplicity, it will be called ZCU104 Evaluation Kit henceforth.) The ZCU104 Evaluation Kit is an FPGA platform setup for the sake of embedded vision applications, so peripheral devices and interfaces are furnished with the board itself.
 
 
 ![Hacarus Sparse AI Kit Overview](https://i.imgur.com/MoRkhuR.png)
@@ -36,7 +36,7 @@ A USB camera input and an HDMI/DisplayPort monitor output is used for motion det
 
 ## 3.1 Hardware
 
-The hardware listed below is required to operate this Kit.
+The hardware listed below is required to operate the Hacarus Sparse AI Kit.
 
 * Items included in ZCU104
     * ZCU104 Evaluation Board
@@ -56,17 +56,17 @@ The hardware listed below is required to operate this Kit.
 
 * Serial Terminal Emulator
 * SD Card Installation File
-    * You can get required files from download website which is informed in purchase.
+    * You can get the required files from the download website. A link to the download website will be sent to you upon purchase of the Hacarus Sparse AI Kit.
 
 ## 3.3 License
 
-The license for this kit becomes effective immediately after purchase. The license is included with 3 months of software and hardware support, as well as software updates.
+The license for Hacarus Sparse AI Kit becomes effective immediately after purchase. The license is included with 3 months of software and hardware support, as well as software updates.
 
 To receive software or hardware support after 3 months from the time of purchase, please contact customer support.
 
 ## 3.4 Compatibility
 
-The functionality of this kit has been confirmed for the hardware configurations listed below. Please note that, in the event that the user decides to use hardware other than what is listed below (i.e. OS, USB camera), they will be unable to receive support for any issues that may arise thereafter.
+The functionality of Hacarus Sparse AI Kit has been confirmed for the hardware configurations listed below. Please note that, in the event that the user decides to use hardware other than what is listed below (i.e. OS, USB camera), they will be unable to receive support for any issues that may arise thereafter.
 
 * Host Machine/Terminal Emulator
 
@@ -196,5 +196,5 @@ THRE_SUP_D | 0.01 | 0 | 1.00 | Smaller values decrease the number of rectangles
 ---
 # 6 Reference Materials
 
-* [Hacarus Sparse AI Kit for FPGA - User Manual](https://hacarus.com/ja/fpga-kit/XXXX)
+* [Hacarus Sparse AI Kit - User Manual](https://hacarus.com/ja/fpga-kit/XXXX)
 * [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://www.xilinx.com/products/boards-and-kits/zcu104.html)
