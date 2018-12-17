@@ -38,21 +38,25 @@ Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速�
 
 本キットを動作させるためには、以下のハードウェアが必要です。
 
-* ZCU104評価ボード
-* マイクロUSBケーブル(ホストマシン-ZCU104ボード間のシリアル通信用)
-* マイクロSDカード
-* 以下のいずれかの解像度をサポートするDisplayPortまたはHDMI入力のモニタ
-    * 3840x2160
-    * 1920x1080
-    * 1280x720
-* DisplayPortケーブルまたはHDMIケーブル
-* e-con Systems See3CAM_CU30_CLT_TC USBカメラ
+* ZCU104 に含まれているもの
+    * ZCU104評価ボード
+    * e-con Systems See3CAM_CU30_CLT_TC USBカメラ
+    * 4-Port USB 3.0 Hub
+    * Power Cord とアダプター
+    * マイクロUSBケーブル(ホストマシン-ZCU104ボード間のシリアル通信用)
+    * マイクロSDカード
+* ユーザに準備いただくもの
+    * 以下のいずれかの解像度をサポートするDisplayPortまたはHDMI入力のモニタ
+        * 3840x2160
+        * 1920x1080
+        * 1280x720
+    * DisplayPortケーブルまたはHDMIケーブル
 
 ## 3.2 ソフトウェア
 
 * ホストマシン上のシリアルターミナルエミュレータ
 * SDカード・インストール・ファイル
-    * ダウンロードは本キットに同梱されるユーザガイドに記載のダウンロードサイトにアクセスしてください
+    * 本キットの購入時に通知されるダウンロードサイトにアクセスして取得ください。
 
 ## 3.3 ライセンス
 
@@ -99,7 +103,10 @@ e-con See3CAM_CU30 | 1920x1080
 * [SD_CARD]/BOOT.BIN
 * [SD_CARD]/gstdemo
 * [SD_CARD]/image.ub
+* [SD_CARD]/init.sh
+* [SD_CARD]/run.sh
 * [SD_CARD]/video_cmd
+* [SD_CARD]/app.cfg
 * [SD_CARD]/README.txt
 
 (*1) micro SDカードはFATでフォーマットされている必要があります。
@@ -141,7 +148,7 @@ Flow Control | None
  * シリアルポートの接続方法（ポートが上記例の場合）
     * Linuxマシンをご利用の場合
     gnome-terminalを起動し、"screen /dev/ttyUSB1 115200" を入力することにより、ボーレート115200でシリアルポートに接続されます。
-接続を終了する場合は、screen の画面で [control]+[a] を押して、次に [control]+[k] を押すことで終了します。
+    接続を終了する場合は、screen の画面で [control]+[a] を押して、次に [k] を押します。画面左下に Really kill this window [y/n] と表示されるので、 [y] を押すことで終了します。
     * Macマシンをご利用の場合
     Terminal.appを起動し、"screen /dev/tty.usbserial-000000 115200" を入力することにより、ボーレート115200でシリアルポートに接続されます。
     接続を終了する場合は、screen の画面で [control]+[a] を押して、次に [k] を押します。画面左下に Really kill this window [y/n] と表示されるので、 [y] を押すことで終了します。
@@ -168,18 +175,31 @@ Flow Control | None
 # bash run.sh
 ```
 
-<!--
-# 5 ハードウェア構成を変更する場合
+---
+# 5 アプリケーションごとの設定
 
-以下を記述予定(<span style="color:red;">PALTEK様のサポート希望</span>)
+## 5.1 オンライン動体検知の設定項目
 
-* DisplayPortを利用する場合
-* HDMIの別のポートを利用する場合
-* 別のUSBカメラを利用する場合
--->
+app.cfg ファイルに記載しているオンライン動体検知の設定項目は、ユーザが必要に応じて値を変更できます。
+以下の項目に対して、最小値から最大値の範囲で設定してください。
+なお、設定ファイル中の項目名そのもの (例: MD_THRESHOLD) を変更した場合は無視されますので、変更しないでください。
+最小値、最大値の値はT.B.D
+
+項目名| デフォルト値 |最小値 | 最大値 | 内容 
+------------- |  ------------- | ------------- | ------------- | -------------
+MD_THRESHOLD |  15 | 1 | 100 | 値が小さいほど動体検知の感度が強くなります
+THRE_RECT_MIN_W |  20 | 1 | 画像サイズの最大幅 |  矩形最小幅(*3)
+THRE_RECT_MIN_H |  20 | 1 | 画像サイズの最大高さ |  矩形最小高さ(*3)
+RECT_BORDER_W |  3 | 1 | 10 | 矩形の幅
+THRE_MIN_G | 0.002 | 0超過 | THRE_MAX_G未満 | 値が小さいほど矩形数が減ります
+THRE_MAX_G | 0.7 | THRE_MIN_G超過 | 1 | 値が大きいほど矩形数が減ります
+THRE_SUP_D | 0.1 | 0 | 1.00 | 値が小さいほど矩形数が減ります
+
+(*3) 幅 = THRE_RECT_MIN_W, 高さ = THRE_RECT_MIN_H 未満のサイズの矩形は描画しません。
+
 
 ---
-# 5 参考資料
+# 6 参考資料
 
 * [Hacarus Sparse AI Kit for FPGA ユーザマニュアル](https://hacarus.com/ja/fpga-kit/XXXX)
 * [Xilinx Zynq UltraScale+ MPSoC ZCU104 キット](https://japan.xilinx.com/products/boards-and-kits/zcu104.html)

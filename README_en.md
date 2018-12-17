@@ -1,26 +1,26 @@
-# Hacarus Sparse AI Kit for FPGA – Technical Document(English Version)
+# Hacarus Sparse AI Kit – Technical Document(English Version)
 
 
 # 1. Introduction
 
-Hacarus Sparse AI Kit for FPGA is a cutting-edge, high-speed, low-power AI starter kit which is capable of machine learning and inference.
+Hacarus Sparse AI Kit is a cutting-edge, high-speed, low-power AI starter kit which is capable of machine learning and inference.
 
 This kit consists of the Xilinx ZCU104 Evaluation Board, software which can installed through an SD card, and AI hardware files.
 
 ## 1.1 Release Notes
 
-- 2018/12/XX Online Motion Detection Functionality Release
+- 2018/12/XX Motion Detection Functionality Release
 
 ## 1.2 Support
 
-We offer technical support via Email to customers that have purchased this kit. For customers that require support, please send an Email including the FPGA Board’s serial number to <fpga-support@hacarus.com>.
+We offer technical support via Email to customers that have purchased the Hacarus Sparse AI Kit. For customers that require support, please send an Email including the FPGA Board’s serial number to <fpga-support@hacarus.com>.
 
 ---
 # 2. Overview
 
 ## 2.1 System Configuration
 
-This kit is put together using Hacarus’s original AI algorithms which are hardware accelerated through the [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://japan.xilinx.com/products/boards-and-kits/zcu104.html). (For the sake of simplicity, it will be called ZCU104 Evaluation Kit henceforth.) The ZCU104 Evaluation Kit is an FPGA platform setup for the sake of embedded vision applications, so peripheral devices and interfaces are furnished with the board itself.
+The Hacarus Sparse AI Kit is put together using Hacarus’s original AI algorithms which are hardware accelerated through the [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://japan.xilinx.com/products/boards-and-kits/zcu104.html). (For the sake of simplicity, it will be called ZCU104 Evaluation Kit henceforth.) The ZCU104 Evaluation Kit is an FPGA platform setup for the sake of embedded vision applications, so peripheral devices and interfaces are furnished with the board itself.
 
 
 ![Hacarus Sparse AI Kit Overview](https://i.imgur.com/MoRkhuR.png)
@@ -38,31 +38,35 @@ A USB camera input and an HDMI/DisplayPort monitor output is used for motion det
 
 The hardware listed below is required to operate the Hacarus Sparse AI Kit.
 
-* ZCU104 Evaluation Board
-* Micro USB Cable (used for connecting the ZCU104 board to the host machine)
-* Micro SD Card
-* Any DisplayPort or HDMI input Monitor with the one of the resolutions listed below.
-    * 3840x2160
-    * 1920x1080
-    * 1280x720
-* Display Port Cable or HDMI Cable
-* e-con Systems See3CAM_CU30_CLT_TC USB Camera
+* Items included in ZCU104
+    * ZCU104 Evaluation Board
+    * e-con Systems See3CAM_CU30_CLT_TC USB Camera
+    * 4-Port USB 3.0 Hub
+    * Power Cord and Adapter
+    * Micro USB Cable (used for connecting the ZCU104 board to the host machine)
+    * Micro SD Card
+* Items that must be provided by the user
+    * Any DisplayPort or HDMI input Monitor with the one of the resolutions listed below.
+        * 3840x2160
+        * 1920x1080
+        * 1280x720
+    * Display Port Cable or HDMI Cable
 
 ## 3.2 Software
 
 * Serial Terminal Emulator
 * SD Card Installation File
-    * In regards to the required download files, please refer to the download sites that are listed in the User Guide included with this kit.
+    * You can get the required files from the download website. A link to the download website will be sent to you upon purchase of the Hacarus Sparse AI Kit.
 
 ## 3.3 License
 
-The license for this kit becomes effective immediately after purchase. The license is included with 3 months of software and hardware support, as well as software updates.
+The license for Hacarus Sparse AI Kit becomes effective immediately after purchase. The license is included with 3 months of software and hardware support, as well as software updates.
 
 To receive software or hardware support after 3 months from the time of purchase, please contact customer support.
 
 ## 3.4 Compatibility
 
-The functionality of this kit has been confirmed for the hardware configurations listed below. Please note that, in the event that the user decides to use hardware other than what is listed below (i.e. OS, USB camera), they will be unable to receive support for any issues that may arise thereafter.
+The functionality of Hacarus Sparse AI Kit has been confirmed for the hardware configurations listed below. Please note that, in the event that the user decides to use hardware other than what is listed below (i.e. OS, USB camera), they will be unable to receive support for any issues that may arise thereafter.
 
 * Host Machine/Terminal Emulator
 
@@ -98,6 +102,8 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
  * [SD_CARD]/BOOT.BIN
  * [SD_CARD]/gstdemo
  * [SD_CARD]/image.ub
+ * [SD_CARD]/init.sh
+ * [SD_CARD]/run.sh
  * [SD_CARD]/video_cmd
  * [SD_CARD]/README.txt
 
@@ -129,7 +135,7 @@ Stop Bits | 1bit
 Parity | None
 Flow Control | None
    
-   (*2) The port number will vary depending on what host machine you are using.
+   (*w) The port number will vary depending on what host machine you are using.
 
  * In order to confirm that your computer's serial port is connected to the FPGA:
     * If you are using Linux,
@@ -140,9 +146,9 @@ Flow Control | None
         You will have to select the port that corresponds to the second COM/LPT port that is displayed in the device manager. For example, if the device manager shows USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), and USB Serial Port(COM4), you need to select the COM2 port.
  * In order to connect your computer to the FPGA's serial port:
     * If you are using Linux,
-        Open gnome-terminal, type "screen /dev/ttyUSB1 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, pressing Ctrl+a followed by Ctrl+k using your keyboard will close your connection.
+        Open gnome-terminal, type "screen /dev/ttyUSB1 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
     * If you are using Mac,
-        Execute Terminal.app, type "screen /dev/tty.usbserial-000000 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard.. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
+        Execute Terminal.app, type "screen /dev/tty.usbserial-000000 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
     * If you are using Windows OS,
         Execute PuTTY. Open the PuTTY Configuration window and change Connection type to "Serial". Next, change Serial line to "COM2" and Speed to "115200". Clicking Open will finalize these changes and enable you to connect to the serial port of the FPGA board with a Baud Rate of 115200.
 
@@ -167,18 +173,28 @@ Flow Control | None
 # bash run.sh
 ```
 
-<!--
-# 5 In The Event That You Modify The Hardware Configuration
+# 5 Application Settings
 
-The following procedures will be written in the future.(<span style="color:red;">Support from PALTECK desired.</span>)
+## 5.1 Motion Detection Settings
 
-* If you use DisplayPort
-* If you use a different HDMI port
-* If you use a different USB camera
--->
+When necessary, the user may modify the Motion Detection settings that are written in the app.cfg configuration file. However, the user may only adjust the values of the variables listed below within the specified range (between the specified minimum and maximum values).
+Furthermore, if you change the names of any of the variables below (Example: Changing MD_THRESHOLD to MD_THRESH), the changed variable will be ignored by the program, so please refrain from doing so.
+The minimum and maximum values have yet to be finalized.
+
+Variable| Default Value | Minimum Value | Maximum Value | Details 
+------------- |  ------------- | ------------- | ------------- | -------------
+MD_THRESHOLD |  15 | 1 | 100 | Smaller values increase the sensitivity of the motion detection.
+THRE_RECT_MIN_W |  20 | 1 | Maximum width of rectangles |  Minimum width of rectangles(*3)
+THRE_RECT_MIN_H |  20 | 1 | Maximum height of rectangles |  Minimum height of rectangles(*3)
+RECT_BORDER_W |  3 | 1 | 10 | Rectangle border thickness
+THRE_MIN_G | 0.002 | > 0 | < THRE_MAX_G | Smaller values decrease the number of rectangles.
+THRE_MAX_G | 0.7 | > THRE_MIN_G | 1 | Larger values decrease the number of rectangles.
+THRE_SUP_D | 0.1 | 0 | 1.00 | Smaller values decrease the number of rectangles
+
+(*3) Rectangles with width less than THRE_RECT_MIN_W and height less than THRE_RECT_MIN_H are not printed to the monitor.
 
 ---
-# 5 Reference Materials
+# 6 Reference Materials
 
-* [Hacarus Sparse AI Kit for FPGA - User Manual](https://hacarus.com/ja/fpga-kit/XXXX)
+* [Hacarus Sparse AI Kit - User Manual](https://hacarus.com/ja/fpga-kit/XXXX)
 * [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://www.xilinx.com/products/boards-and-kits/zcu104.html)
