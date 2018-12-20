@@ -89,7 +89,7 @@ e-con See3CAM_CU30 | 1920x1080
 
 ## 4.1 ボードのセットアップ
 
-![ボード概要](https://i.imgur.com/tDI7LXC.jpg)
+![ボード概要](https://user-images.githubusercontent.com/76630/50266416-c2a0bc80-0466-11e9-8d73-817d09ef0d34.png)
 
 1. 12V電源プラグをコネクタ③に接続します。
 2. 出力モニタに接続されたHDMIケーブルをコネクタ⑦に接続、または、DisplayPortケーブルをコネクタ⑥に接続します。

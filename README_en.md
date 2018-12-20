@@ -111,7 +111,7 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
 6.Confirm that the Boot Mode Switch (8) is set to (1,2,3,4)=(ON, OFF, OFF, OFF).
 
 
-![Board Overview](https://i.imgur.com/OQ5b8YY.png)
+![Board Overview](https://user-images.githubusercontent.com/76630/50266373-9dac4980-0466-11e9-82c9-a465b5ee18b9.png)
 
 <div style="font-size:0.8em;">(※)You can reboot the Linux system on the FPGA using the Reboot Switch(either of the (9) switches)Mid-execution、in the event that there are connection mistakes (e.g. USB camera being unplugged)、you can simply reboot the system using this switch when necessary.</div>
 
