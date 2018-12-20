@@ -183,7 +183,6 @@ Flow Control | None
 app.cfg ファイルに記載しているオンライン動体検知の設定項目は、ユーザが必要に応じて値を変更できます。
 以下の項目に対して、最小値から最大値の範囲で設定してください。
 なお、設定ファイル中の項目名そのもの (例: MD_THRESHOLD) を変更した場合は無視されますので、変更しないでください。
-最小値、最大値の値はT.B.D
 
 項目名| デフォルト値 |最小値 | 最大値 | 内容 
 ------------- |  ------------- | ------------- | ------------- | -------------
@@ -201,5 +200,4 @@ THRE_SUP_D | 0.1 | 0 | 1.00 | 値が小さいほど矩形数が減ります
 ---
 # 6 参考資料
 
-* [HACARUS-X Edge for Xilinx ユーザマニュアル](https://hacarus.com/ja/fpga-kit/XXXX)
 * [Xilinx Zynq UltraScale+ MPSoC ZCU104 キット](https://japan.xilinx.com/products/boards-and-kits/zcu104.html)

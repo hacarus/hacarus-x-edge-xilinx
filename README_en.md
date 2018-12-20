@@ -179,7 +179,6 @@ Flow Control | None
 
 When necessary, the user may modify the Motion Detection settings that are written in the app.cfg configuration file. However, the user may only adjust the values of the variables listed below within the specified range (between the specified minimum and maximum values).
 Furthermore, if you change the names of any of the variables below (Example: Changing MD_THRESHOLD to MD_THRESH), the changed variable will be ignored by the program, so please refrain from doing so.
-The minimum and maximum values have yet to be finalized.
 
 Variable| Default Value | Minimum Value | Maximum Value | Details 
 ------------- |  ------------- | ------------- | ------------- | -------------
@@ -196,5 +195,4 @@ THRE_SUP_D | 0.1 | 0 | 1.00 | Smaller values decrease the number of rectangles
 ---
 # 6 Reference Materials
 
-* [HACARUS-X Edge for Xilinx - User Manual](https://hacarus.com/ja/fpga-kit/XXXX)
 * [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://www.xilinx.com/products/boards-and-kits/zcu104.html)
