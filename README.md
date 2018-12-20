@@ -1,15 +1,15 @@
-# Hacarus Sparse AI Kit for FPGA – テクニカル・ドキュメント(日本語版)
+# HACARUS-X Edge for Xilinx – テクニカル・ドキュメント(日本語版)
 
 
 # 1. はじめに
 
-Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速かつ低消費電力な学習および推論が実行可能な人工知能のスターターキットです。
+HACARUS-X Edge for Xilinx (以下、本キット)は、エッジで高速かつ低消費電力な学習および推論が実行可能な人工知能のスターターキットです。
 
 本キットは、Xilinx ZCU104評価ボードとSDカードにインストールされる一連のソフトウェアとAIハードウェア構成ファイルからなります。
 
 ## 1.1 リリースノート
 
-- 2018/12/XX オンライン動体検知機能リリース
+- 2018/12/27 オンライン動体検知機能リリース
 
 ## 1.2 サポート
 
@@ -201,5 +201,5 @@ THRE_SUP_D | 0.1 | 0 | 1.00 | 値が小さいほど矩形数が減ります
 ---
 # 6 参考資料
 
-* [Hacarus Sparse AI Kit for FPGA ユーザマニュアル](https://hacarus.com/ja/fpga-kit/XXXX)
+* [HACARUS-X Edge for Xilinx ユーザマニュアル](https://hacarus.com/ja/fpga-kit/XXXX)
 * [Xilinx Zynq UltraScale+ MPSoC ZCU104 キット](https://japan.xilinx.com/products/boards-and-kits/zcu104.html)
