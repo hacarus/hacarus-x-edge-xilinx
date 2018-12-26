@@ -189,6 +189,7 @@ RECT_BORDER_W |  3 | 1 | 10 | Rectangle border thickness
 THRE_MIN_G | 0.002 | > 0 | < THRE_MAX_G | Smaller values decrease the number of rectangles.
 THRE_MAX_G | 0.7 | > THRE_MIN_G | 1 | Larger values decrease the number of rectangles.
 THRE_SUP_D | 0.1 | 0 | 1.00 | Smaller values decrease the number of rectangles
+CONSOLE_OUT | 1 | 0 | 1 | Displays the time stamp and the number of detected rectangles on the console.
 
 (*3) Rectangles with width less than THRE_RECT_MIN_W and height less than THRE_RECT_MIN_H are not printed to the monitor.
 

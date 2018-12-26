@@ -193,6 +193,7 @@ RECT_BORDER_W |  3 | 1 | 10 | 矩形の幅
 THRE_MIN_G | 0.002 | 0超過 | THRE_MAX_G未満 | 値が小さいほど矩形数が減ります
 THRE_MAX_G | 0.7 | THRE_MIN_G超過 | 1 | 値が大きいほど矩形数が減ります
 THRE_SUP_D | 0.1 | 0 | 1.00 | 値が小さいほど矩形数が減ります
+CONSOLE_OUT | 1 | 0 | 1 | コンソール上にタイムスタンプと検出された矩形数を表示します
 
 (*3) 幅 = THRE_RECT_MIN_W, 高さ = THRE_RECT_MIN_H 未満のサイズの矩形は描画しません。
 
