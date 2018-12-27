@@ -1,205 +1,200 @@
-# Hacarus Sparse AI Kit for FPGA – テクニカル・ドキュメント(日本語版)
+# HACARUS-X Edge for Xilinx – Technical Document
 
+日本語版は[こちら](./README_ja.md)
 
-# 1. はじめに
+# 1. Introduction
 
-Hacarus Sparse AI Kit for FPGA (以下、本キット)は、エッジで高速かつ低消費電力な学習および推論が実行可能な人工知能のスターターキットです。
+HACARUS-X Edge for Xilinx is a cutting-edge, high-speed, low-power AI starter kit which is capable of machine learning and inference.
 
-本キットは、Xilinx ZCU104評価ボードとSDカードにインストールされる一連のソフトウェアとAIハードウェア構成ファイルからなります。
+This kit consists of the Xilinx ZCU104 Evaluation Board, software which can installed through an SD card, and AI hardware files.
 
-## 1.1 リリースノート
+## 1.1 Release Notes
 
-- 2018/12/XX オンライン動体検知機能リリース
+- 2018/12/27 Motion Detection Functionality Release
 
-## 1.2 サポート
+## 1.2 Support
 
-本キットをご購入されたお客様向けに、e-mailによるテクニカルサポートを提供しています。サポートが必要なお客様は、FPGAボードのシリアル番号を記載の上、<fpga-support@hacarus.com> までご連絡ください。
-
----
-# 2. 概要
-
-## 2.1 システム構成
-
-本キットは、[Xilinx Zynq UltraScale+ MPSoC ZCU104 キット](https://japan.xilinx.com/products/boards-and-kits/zcu104.html)(以下、ZCU104評価キット)と、ZCU104評価キット上でハードウェアアクセラレーションされるHacarus独自の AIアルゴリズムで構成されます。ZCU104評価キットは、組み込みビジョンアプリケーションのために設計されたFPGAプラットフォームで、組み込みビジョンアプリケーションに必要な周辺機器・インターフェースを備えています。
-
-![本キットの概要](https://i.imgur.com/MoRkhuR.png)
-
-本キットを用いることで、USBカメラからのライブ画像ストリームを独自AIアルゴリズムでオンライン学習し、予測結果をモニタ出力することが可能です。シリアル通信を介してホストマシンに解析結果を送信することも可能です。
-
-
-### 2.1.1 オンライン動体検知
-
-オンライン動体検知では、入力にUSBカメラを、出力にHDMIモニタまたはDisplayPortモニタを利用します。このキットは、固定されたUSBカメラが捉えたライブ画像ストリームの中から、動体を検出・マーキングしてモニタに出力します。ファイル名の末尾が moving-object となっている zip ファイルをダウンロードすることで利用が可能です。
+We offer technical support via Email to customers that have purchased the HACARUS-X Edge for Xilinx. For customers that require support, please send an Email including the FPGA Board’s serial number to <fpga-support@hacarus.com>.
 
 ---
-# 3. 動作環境
+# 2. Overview
 
-## 3.1 ハードウェア
+## 2.1 System Configuration
 
-本キットを動作させるためには、以下のハードウェアが必要です。
+The HACARUS-X Edge for Xilinx is put together using Hacarus’s original AI algorithms which are hardware accelerated through the [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://japan.xilinx.com/products/boards-and-kits/zcu104.html). (For the sake of simplicity, it will be called ZCU104 Evaluation Kit henceforth.) The ZCU104 Evaluation Kit is an FPGA platform setup for the sake of embedded vision applications, so peripheral devices and interfaces are furnished with the board itself.
 
-* ZCU104 に含まれているもの
-    * ZCU104評価ボード
-    * e-con Systems See3CAM_CU30_CLT_TC USBカメラ
+
+![HACARUS-X Edge for Xilinx Overview](https://i.imgur.com/MoRkhuR.png)
+
+Using the HACARUS-X Edge for Xilinx, the live video stream from a USB camera is processed as learning data through Hacarus’s original AI algorithms. It is possible to view the results of machine learning predictions from monitor output. Through serial communication, analysis results can also be sent to the host machine.
+
+### 2.1.1 Motion Detection (Calculated On A Cloud Server)
+
+A USB camera input and an HDMI/DisplayPort monitor output is used for motion detection. Computations are performed on a Cloud Server. From the live video stream obtained from a fixed USB camera, moving objects are recognized by the algorithm and marked before being output to the monitor. It is possible to view the resulting video by downloading the corresponding zip file with the filename extention “moving-object.”
+
+---
+# 3. System Requirements
+
+## 3.1 Hardware
+
+The hardware listed below is required to operate the HACARUS-X Edge for Xilinx.
+
+* Items included in ZCU104
+    * ZCU104 Evaluation Board
+    * e-con Systems See3CAM_CU30_CLT_TC USB Camera
     * 4-Port USB 3.0 Hub
-    * Power Cord とアダプター
-    * マイクロUSBケーブル(ホストマシン-ZCU104ボード間のシリアル通信用)
-    * マイクロSDカード
-* ユーザに準備いただくもの
-    * 以下のいずれかの解像度をサポートするDisplayPortまたはHDMI入力のモニタ
+    * Power Cord and Adapter
+    * Micro USB Cable (used for connecting the ZCU104 board to the host machine)
+    * Micro SD Card
+* Items that must be provided by the user
+    * Any DisplayPort or HDMI input Monitor with the one of the resolutions listed below.
         * 3840x2160
         * 1920x1080
         * 1280x720
-    * DisplayPortケーブルまたはHDMIケーブル
+    * Display Port Cable or HDMI Cable
 
-## 3.2 ソフトウェア
+## 3.2 Software
 
-* ホストマシン上のシリアルターミナルエミュレータ
-* SDカード・インストール・ファイル
-    * 本キットの購入時に通知されるダウンロードサイトにアクセスして取得ください。
+* Serial Terminal Emulator
+* SD Card Installation File
+    * You can get the required files from the download website. A link to the download website will be sent to you upon purchase of the HACARUS-X Edge for Xilinx.
 
-## 3.3 ライセンス
+## 3.3 License
 
-本ライセンスは、本キットをご購入いただいた時点から適用されます。本ライセンスには、3ヶ月間のソフトウェアおよびハードウェアのサポートとソフトウェアアップデートが含まれます。
+The license for HACARUS-X Edge for Xilinx becomes effective immediately after purchase. The license is included with 3 months of software and hardware support, as well as software updates.
 
-ご購入から3ヶ月以降のサポートおよびソフトウェアアップデートには、別途ご相談ください。
+To receive software or hardware support after 3 months from the time of purchase, please contact customer support.
 
-## 3.4 互換性
+## 3.4 Compatibility
 
-本キットは以下のハードウェア構成の条件で、動作検証済みです。以下以外の OS や USB カメラで稼働させる場合はサポート対象外となりますのでご了承ください。
+The functionality of HACARUS-X Edge for Xilinx has been confirmed for the hardware configurations listed below. Please note that, in the event that the user decides to use hardware other than what is listed below (i.e. OS, USB camera), they will be unable to receive support for any issues that may arise thereafter.
 
-* ホストマシン及びターミナルエミュレータ
+* Host Machine/Terminal Emulator
 
-OS| エミュレータ
+OS| Emulator
 ------------- | -------------
 Ubunts 16.04 | gnome-terminal
-Mac OS  | Terminal.app
+Mac OS | Terminal.app
 Windows 10 Home | PuTTY
 
-* USB3カメラ
+* USB3 Camera
 
-型| 解像度
+Model | Resolution
 ------------- | -------------
 e-con See3CAM_CU30 | 1920x1080
 
-モニタは LG 社製 27UD58 (1920x1080) を HDMI 接続にて動作確認しています。これ以外の解像度や接続方式で問題が発生した場合はサポートまでお知らせください。
+Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected via HDMI. If a problem occurs using a different type of connection or resolution, please contact customer support.
+
 
 ---
-# 4. インストールおよび操作方法
+# 4. Installation and Method of Operation
 
-## 4.1 ボードのセットアップ
+## 4.1 Board Setup
 
-![ボード概要](https://i.imgur.com/tDI7LXC.jpg)
+1.Connect the 12V power plug to connector (3).
+2.Connect your output monitor to connector (7) using an HDMI cable. Alternatively, you can connect a DisplayPort cable to connector (6).
+3.Connect the Micro side of your Micro-USB cable to to the USB-UART (connector (1)), and connect the USB side to a USB port on our host machine. 
+4.Next, take the SD card, which should contain the ZIP file that you downloaded (refer to Section 3.2), and plug it into the Micro-USB slot (2). Confirm that the file hierarchy is as stated below.
 
-1. 12V電源プラグをコネクタ③に接続します。
-2. 出力モニタに接続されたHDMIケーブルをコネクタ⑦に接続、または、DisplayPortケーブルをコネクタ⑥に接続します。
-3. micro USBケーブルをUSB-UARTコネクタ①に接続し、もう一方のコネクタをホストマシンのUSBポートに挿入します。
-4. ダウンロードしたzipファイルをZIPユーティリティで解凍して、micro SDカードのルートディレクトリに一連のファイルをコピーします(*1)。ファイルの階層が次のようになっていることを確認してください。
+ * [SD_CARD]/gstreamer-1.0/libgstsdxmotiondetection.so
+ * [SD_CARD]/lib/libgstsdxallocator.so
+ * [SD_CARD]/lib/libgstsdxbase.so
+ * [SD_CARD]/lib/libmotiondetection.so
+ * [SD_CARD]/BOOT.BIN
+ * [SD_CARD]/gstdemo
+ * [SD_CARD]/image.ub
+ * [SD_CARD]/init.sh
+ * [SD_CARD]/run.sh
+ * [SD_CARD]/video_cmd
+ * [SD_CARD]/README.txt
 
-* [SD_CARD]/gstreamer-1.0/libgstsdxmotiondetection.so
-* [SD_CARD]/lib/libgstsdxallocator.so
-* [SD_CARD]/lib/libgstsdxbase.so
-* [SD_CARD]/lib/libmotiondetection.so
-* [SD_CARD]/BOOT.BIN
-* [SD_CARD]/gstdemo
-* [SD_CARD]/image.ub
-* [SD_CARD]/init.sh
-* [SD_CARD]/run.sh
-* [SD_CARD]/video_cmd
-* [SD_CARD]/app.cfg
-* [SD_CARD]/README.txt
+5.Connect your e-con See3CAM_CU30 USB Camera to USB connector (5).
+6.Confirm that the Boot Mode Switch (8) is set to (1,2,3,4)=(ON, OFF, OFF, OFF).
 
-(*1) micro SDカードはFATでフォーマットされている必要があります。
 
-5.SDカードを、microSDスロット②に挿入します。
-6.e-con See3CAM_CU30 USBカメラを、USBコネクタ➄に接続します。
-7.ブートモードスイッチ⑧(SW6)が、(1,2,3,4)=(ON, OFF, OFF, OFF)になっていることを確認します。
+![Board Overview](https://user-images.githubusercontent.com/76630/50266373-9dac4980-0466-11e9-82c9-a465b5ee18b9.png)
 
-## 4.2 アプリケーション[xyz]の実行
+<div style="font-size:0.8em;">(※)You can reboot the Linux system on the FPGA using the Reboot Switch(either of the (9) switches)Mid-execution、in the event that there are connection mistakes (e.g. USB camera being unplugged)、you can simply reboot the system using this switch when necessary.</div>
 
-### 4.2.1 Step 1 (準備)
-1. 4.1章の方法で、micro SDカードにファイルをコピーしてFPGAボードのスロットに差し込まれていること、および、FPGAボードが正しくセットアップされているか確認します。
-2. FPGAボードの電源スイッチ④をONにして、FPGAボードを起動します。
+## 4.2 [xyz] Application Execution
 
-* 正しくファイルがインストールされたmicro SDカードが挿入されている場合、micro SD スロットの横のLEDが赤色から緑色に変化し点灯します。LEDが緑色に点灯しない場合は、4章の方法で、正しくFPGAボードが設定されているか確認します。特にブートモードスイッチ⑧が(1,2,3,4)=(ON,OFF,OFF,OFF)になっているか確認し、また、micro SDカードのディレクトリ階層が正しいか確認します。
-* リブートスイッチ(⑨の2つのスイッチの一方)を押すことで、Linuxシステムをリブートすることができます。実行中に、誤ってUSBカメラをコネクタから抜いてしまった場合等、必要に応じてシステムを再起動することができます。
+### 4.2.1 Step 1 (Preparation)
+1.Using the same method from section 4.1, copy the files to the Micro SD card and insert the card into the Micro SD slot (2).
+2.Switch the power switch (4) on the FPGA on and wait for the FPGA to boot up.
 
-3.ホストマシン上でシリアル・ターミナル・エミュレータを起動し以下の設定でFPGAボードに接続します。
+ * In the event that the micro USB is configured correctly, the *** LED should change from red to green before turning off. If the LED stays green, you may not have configured the FPGA correctly in section 4.1. In particular, please confirm that the boot mode switch is set to (1,2,3,4)=(ON,OFF,OFF,OFF), and also that the micro SD card’s directory hierarchy is correct.
+ * By flipping the reboot switch (either of the (9) switches), you can reboot the Linux system on the FPGA. Mid-execution, you may reboot the Linux system with the reboot switch if you need make adjustments to the hardware setup (USB camera, etc).
 
-項目 | 値
+3.Open a Serial Terminal Emulator (e.g. PuTTY, Tera Term) from your host machine and connect to the FPGA board with the Serial Port configured to the settings listed below.
+
+Item | Value
 ------------- | -------------
-Port  | (*2)参照
+Port  | refer to (*2)
 Baud Rate | 115200
 Data Bits | 8bit
 Stop Bits | 1bit
 Parity | None
 Flow Control | None
+   
+   (*w) The port number will vary depending on what host machine you are using.
 
-   (*2) お使いのホストマシン環境により、ポート番号は異なります。
-    
- * シリアルポートの確認方法
-    * Linuxマシンをご利用の場合
-    "ls -l /dev/ttyUSB*"で表示される、2番目のデバイスを指定する必要があります。例えば、/dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, /dev/ttyUSB3と表示される場合、/dev/ttyUSB1をPortに指定します。また、指定するポートに対してchmod 666によってアクセス権を変更する必要があります。
-    * Macマシンをご利用の場合
-    "ls -l /dev/tty.*"で表示される、2番目のデバイスを指定する必要があります。例えば、/dev/tty.usbserial-000000, /dev/tty.usbserial-000001, /dev/tty.usbserial-000002, /dev/tty.usbserial-000003と表示される場合、/dev/tty.usbserial-000001をPortに指定します。
-    * Windowsマシンをご利用の場合
-    デバイスマネージャの「ポート(COMとLPT)」に表示される、2番目のデバイスを指定する必要があります。例えば、USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), USB Serial Port(COM4)と表示される場合、COM2をPortに指定します。
+ * In order to confirm that your computer's serial port is connected to the FPGA:
+    * If you are using Linux,
+        Typing "ls -l /dev/ttyUSB*" will display your devices. You have to select the 2nd device. For example、if /dev/ttyUSB0, /dev/ttyUSB1, /dev/ttyUSB2, and /dev/ttyUSB3 are displayed、you have to select /dev/ttyUSB1. Furthermore、you have to change the permissions of the port that you select using chmod 666.
+    * If you are using Mac,
+        Typing "ls -l /dev/tty.*" will display your devices. You have to select the 2nd device. For example, if /dev/tty.usbserial-000000, /dev/tty.usbserial-000001, /dev/tty.usbserial-000002, and /dev/tty.usbserial-000003 are displayed, you have to select /dev/tty.usbserial-000001.
+    * If you are using Windows OS,
+        You will have to select the port that corresponds to the second COM/LPT port that is displayed in the device manager. For example, if the device manager shows USB Serial Port(COM1), USB Serial Port(COM2), USB Serial Port(COM3), and USB Serial Port(COM4), you need to select the COM2 port.
+ * In order to connect your computer to the FPGA's serial port:
+    * If you are using Linux,
+        Open gnome-terminal, type "screen /dev/ttyUSB1 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
+    * If you are using Mac,
+        Execute Terminal.app, type "screen /dev/tty.usbserial-000000 115200" and press enter. This connects your computer to the FPGA's serial port with a Baud Rate of 115200. If you ever want to disconnect, press Ctrl+a followed by k using your keyboard. A message saying "Really kill this window [y/n]" will display in the bottom left hand corner of your screen. Typing y will close your connection.
+    * If you are using Windows OS,
+        Execute PuTTY. Open the PuTTY Configuration window and change Connection type to "Serial". Next, change Serial line to "COM2" and Speed to "115200". Clicking Open will finalize these changes and enable you to connect to the serial port of the FPGA board with a Baud Rate of 115200.
 
- * シリアルポートの接続方法（ポートが上記例の場合）
-    * Linuxマシンをご利用の場合
-    gnome-terminalを起動し、"screen /dev/ttyUSB1 115200" を入力することにより、ボーレート115200でシリアルポートに接続されます。
-    接続を終了する場合は、screen の画面で [control]+[a] を押して、次に [k] を押します。画面左下に Really kill this window [y/n] と表示されるので、 [y] を押すことで終了します。
-    * Macマシンをご利用の場合
-    Terminal.appを起動し、"screen /dev/tty.usbserial-000000 115200" を入力することにより、ボーレート115200でシリアルポートに接続されます。
-    接続を終了する場合は、screen の画面で [control]+[a] を押して、次に [k] を押します。画面左下に Really kill this window [y/n] と表示されるので、 [y] を押すことで終了します。
-    * Windowsマシンをご利用の場合
-    PuTTYを起動します。PuTTY Configuration で Connection typeで"Serial"を選択し、Serial lineを"COM2"、Speedを"115200"に設定してOpenをクリックすることで、ボーレート115200でシリアルポートと接続することができます。
 
-### 4.2.2 Step 2 (実行)
-1. シリアルターミナルにコマンドプロンプトが現れるまで待ちます。
-2. コマンドプロンプトが現れたら、次のコマンドを送信し、micro SDカードディレクトリに移動します。
+### 4.2.2 Step 2 (Execution)
+1.Wait until the command prompt appears in the serial terminal window.
+2.When the command prompt appears, type in the following command to change to the SD card directory.
 
 ```
 # cd /media/card
 ```
 
-3.次のコマンドを送信し、micro SDカード上の共有ライブラリをコピーします。
- 
+3.Next, enter the following command in order to copy the shared library from the micro SD card to the FPGA.
+
 ```
 # bash init.sh
 ```
 
-4.次のコマンドを送信し、アプリケーションを実行します。
+4.Enter the following command in order to execute the application.
 
 ```
 # bash run.sh
 ```
 
----
-# 5 アプリケーションごとの設定
+# 5 Application Settings
 
-## 5.1 オンライン動体検知の設定項目
+## 5.1 Motion Detection Settings
 
-app.cfg ファイルに記載しているオンライン動体検知の設定項目は、ユーザが必要に応じて値を変更できます。
-以下の項目に対して、最小値から最大値の範囲で設定してください。
-なお、設定ファイル中の項目名そのもの (例: MD_THRESHOLD) を変更した場合は無視されますので、変更しないでください。
-最小値、最大値の値はT.B.D
+When necessary, the user may modify the Motion Detection settings that are written in the app.cfg configuration file. However, the user may only adjust the values of the variables listed below within the specified range (between the specified minimum and maximum values).
+Furthermore, if you change the names of any of the variables below (Example: Changing MD_THRESHOLD to MD_THRESH), the changed variable will be ignored by the program, so please refrain from doing so.
 
-項目名| デフォルト値 |最小値 | 最大値 | 内容 
+Variable| Default Value | Minimum Value | Maximum Value | Details 
 ------------- |  ------------- | ------------- | ------------- | -------------
-MD_THRESHOLD |  15 | 1 | 100 | 値が小さいほど動体検知の感度が強くなります
-THRE_RECT_MIN_W |  20 | 1 | 画像サイズの最大幅 |  矩形最小幅(*3)
-THRE_RECT_MIN_H |  20 | 1 | 画像サイズの最大高さ |  矩形最小高さ(*3)
-RECT_BORDER_W |  3 | 1 | 10 | 矩形の幅
-THRE_MIN_G | 0.002 | 0超過 | THRE_MAX_G未満 | 値が小さいほど矩形数が減ります
-THRE_MAX_G | 0.7 | THRE_MIN_G超過 | 1 | 値が大きいほど矩形数が減ります
-THRE_SUP_D | 0.1 | 0 | 1.00 | 値が小さいほど矩形数が減ります
+MD_THRESHOLD |  15 | 1 | 100 | Smaller values increase the sensitivity of the motion detection.
+THRE_RECT_MIN_W |  20 | 1 | Maximum width of rectangles |  Minimum width of rectangles(*3)
+THRE_RECT_MIN_H |  20 | 1 | Maximum height of rectangles |  Minimum height of rectangles(*3)
+RECT_BORDER_W |  3 | 1 | 10 | Rectangle border thickness
+THRE_MIN_G | 0.002 | > 0 | < THRE_MAX_G | Smaller values decrease the number of rectangles.
+THRE_MAX_G | 0.7 | > THRE_MIN_G | 1 | Larger values decrease the number of rectangles.
+THRE_SUP_D | 0.1 | 0 | 1.00 | Smaller values decrease the number of rectangles
+CONSOLE_OUT | 1 | 0 | 1 | Displays the time stamp and the number of detected rectangles on the console.
 
-(*3) 幅 = THRE_RECT_MIN_W, 高さ = THRE_RECT_MIN_H 未満のサイズの矩形は描画しません。
-
+(*3) Rectangles with width less than THRE_RECT_MIN_W and height less than THRE_RECT_MIN_H are not printed to the monitor.
 
 ---
-# 6 参考資料
+# 6 Reference Materials
 
-* [Hacarus Sparse AI Kit for FPGA ユーザマニュアル](https://hacarus.com/ja/fpga-kit/XXXX)
-* [Xilinx Zynq UltraScale+ MPSoC ZCU104 キット](https://japan.xilinx.com/products/boards-and-kits/zcu104.html)
+* [Xilinx Zynq UltraScale+ MPSoC ZCU104 Kit](https://www.xilinx.com/products/boards-and-kits/zcu104.html)
