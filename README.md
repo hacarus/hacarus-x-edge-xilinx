@@ -116,7 +116,7 @@ Functionality has been confirmed using LG Monitor 27UD58 (1920x1080) connected v
 
 <div style="font-size:0.8em;">(※)You can reboot the Linux system on the FPGA using the Reboot Switch(either of the (9) switches)Mid-execution、in the event that there are connection mistakes (e.g. USB camera being unplugged)、you can simply reboot the system using this switch when necessary.</div>
 
-## 4.2 [xyz] Application Execution
+## 4.2 Application Execution
 
 ### 4.2.1 Step 1 (Preparation)
 1.Using the same method from section 4.1, copy the files to the Micro SD card and insert the card into the Micro SD slot (2).
