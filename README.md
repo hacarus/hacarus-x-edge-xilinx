@@ -162,21 +162,19 @@ Flow Control | None
 # cd /media/card
 ```
 
-3.Next, enter the following command in order to copy the shared library from the micro SD card to the FPGA, and specify the resolution of the USB camera.
+3.Next, enter the following command in order to copy the shared library from the micro SD card to the FPGA, and specify the resolution of the USB camera(*).
 
 ```
 # bash init.sh (frame width of USB camera) (frame height of USB camera)
 ```
 
-4.Enter the following command in order to specify the resolution of monitor and execute the application.
+4.Enter the following command in order to specify your monitor's resolution(*) and execute the application.
 
 ```
-# bash run.sh (frame width of monitor) (frame height of monitor)
+# bash run.sh (monitor width) (monitor height)
 ```
 
-Notes: About specifying the resolution of USB camera and monitor
-If you don't specify the resolution to init.sh / run.sh, they use 1920x1080 automatically.
-If you specify the resolution that USB camera / monitor unsupport, there's a possibility that Motion Detection result isn't displayed. 
+(*) Note: Regarding the parameters that specify the USB camera's resolution and the monitor's resolution, if you don't specify the USB camera's resolution to init.sh and the monitor's resolution to run.sh, 1920x1080 will be used by default. If you specify a USB camera or monitor resolution that is not supported, the Motion Detection results may not be displayed correctly.
 
 # 5 Application Settings
 
